@@ -1,0 +1,47 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="{{ SITEURL }}/">
+                {{ SITENAME }}
+            </a>
+        </li>
+        {% for title, link in MENUITEMS %}
+        <li>
+            <a href="{{ link }}">
+                {{ title }}
+            </a>
+        </li>
+        {% if loop.last %}
+        <li class="divider"></li>
+        {% endif %}
+        {% endfor %}
+        
+        {% if DISPLAY_PAGES_ON_MENU %}
+        {% for p in PAGES %}
+        <li{% if p == page %} class="active"{% endif %}>
+            <a href="{{ SITEURL }}/{{ p.url }}">
+                {{ p.menulabel|default(p.title) }}
+            </a>
+        </li>
+        {% if loop.last %}
+        <li class="divider"></li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        
+        {% if DISPLAY_CATEGORIES_ON_MENU %}
+        {% for cat, null in categories %}
+        <li {% if cat == category %}class="active"{% endif %}>
+            <a href="{{ SITEURL }}/{{ cat.url }}">
+                {{ cat | capitalize }}
+            </a>
+        </li>
+        {% if loop.last %}
+        <li class="divider"></li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+<!-- /#sidebar-wrapper -->
