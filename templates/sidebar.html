@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
+    <ul id="accordion" class="sidebar-nav">
         <li class="sidebar-brand">
             <a href="{{ SITEURL }}/">
                 {{ SITENAME }}
@@ -18,29 +18,45 @@
         {% endfor %}
         
         {% if DISPLAY_PAGES_ON_MENU %}
-        {% for p in PAGES %}
-        <li{% if p == page %} class="active"{% endif %}>
-            <a href="{{ SITEURL }}/{{ p.url }}">
-                {{ p.menulabel|default(p.title) }}
+        {% block collapse_pages %}
+        <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                Pages
             </a>
         </li>
-        {% if loop.last %}
-        <li class="divider"></li>
-        {% endif %}
-        {% endfor %}
+        <div id="collapse-pages" class="sidebar_submenu collapse"><!-- should not start collapsed if active -->
+            <ul>
+                {% for p in PAGES %}
+                <li{% if p == page %} class="active"{% endif %}>
+                    <a href="{{ SITEURL }}/{{ p.url }}">
+                        {{ p.menulabel|default(p.title) }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endblock %}
         {% endif %}
         
         {% if DISPLAY_CATEGORIES_ON_MENU %}
-        {% for cat, null in categories %}
-        <li {% if cat == category %}class="active"{% endif %}>
-            <a href="{{ SITEURL }}/{{ cat.url }}">
-                {{ cat | capitalize }}
+        {% block collapse_categories %}
+        <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                Categories
             </a>
         </li>
-        {% if loop.last %}
-        <li class="divider"></li>
-        {% endif %}
-        {% endfor %}
+        <div id="collapse-categories" class="sidebar_submenu collapse"><!-- should not start collapsed if active -->
+            <ul>
+                {% for cat, null in categories %}
+                <li {% if cat == category %}class="active"{% endif %}>
+                    <a href="{{ SITEURL }}/{{ cat.url }}">
+                        {{ cat | capitalize }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endblock %}
         {% endif %}
     </ul>
 </div>

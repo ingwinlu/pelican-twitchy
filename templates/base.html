@@ -29,7 +29,79 @@
 </head>
 <body>
     <div id="wrapper">
-        {% include 'sidebar.html' %}
+        <!-- Sidebar -->
+        <!--
+        <div id="sidebar-small-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{{ SITEURL }}/">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>-->
+        <div id="sidebar-wrapper">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{{ SITEURL }}/">
+                        {{ SITENAME }}
+                    </a>
+                </li>
+                {% for title, link in MENUITEMS %}
+                <li>
+                    <a href="{{ link }}">
+                        {{ title }}
+                    </a>
+                </li>
+                {% if loop.last %}
+                <li class="divider"></li>
+                {% endif %}
+                {% endfor %}
+                
+                {% if DISPLAY_PAGES_ON_MENU %}
+                {% block collapse_pages %}
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        Pages
+                    </a>
+                </li>
+                <div id="collapse-pages" class="sidebar_submenu collapse"><!-- should not start collapsed if active -->
+                    <ul>
+                        {% for p in PAGES %}
+                        <li{% if p == page %} class="active"{% endif %}>
+                            <a href="{{ SITEURL }}/{{ p.url }}">
+                                {{ p.menulabel|default(p.title) }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endblock %}
+                {% endif %}
+                
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                {% block collapse_categories %}
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        Categories
+                    </a>
+                </li>
+                <div id="collapse-categories" class="sidebar_submenu collapse"><!-- should not start collapsed if active -->
+                    <ul>
+                        {% for cat, null in categories %}
+                        <li {% if cat == category %}class="active"{% endif %}>
+                            <a href="{{ SITEURL }}/{{ cat.url }}">
+                                {{ cat | capitalize }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endblock %}
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
         <!-- open/close sidebar -->
         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
             <span class="glyphicon glyphicon-resize-horizontal"></span>
