@@ -58,6 +58,20 @@
                         <span class="glyphicon glyphicon-th-list"></span>
                     </a>
                 </li>
+                {% if SOCIAL %}
+                <div class="nav-divider"></div>
+                {% for name, link in SOCIAL %}
+                    {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
+                    {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
+                        {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+                    {% else %}
+                        {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+                    {% endif %}
+                <li>
+                    <a href="{{ link }}"><i class={{ iconattributes }}></i></a>
+                </li>
+                {% endfor %}
+                {% endif %}
             </ul>
         </div>
         <div id="sidebar-wrapper">
@@ -127,6 +141,30 @@
                             <a href="{{ SITEURL }}/{{ cat.url }}">
                                 <span class="badge pull-right categorybadge">{{ articles|count }}</span>
                                 {{ cat | capitalize }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                {% if SOCIAL %}
+                <div class="nav-divider"></div>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        Social
+                        {#
+                        <span class="glyphicon glyphicon-chevron-down padding-small"></span>
+                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>
+                        #}
+                    </a>
+                </li>
+                <div id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
+                    <ul>
+                        {% for name, link in SOCIAL %}
+                        <li>
+                            <a href="{{ link }}">
+                                {{ name }}
                             </a>
                         </li>
                         {% endfor %}
