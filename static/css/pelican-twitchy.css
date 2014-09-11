@@ -208,6 +208,13 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     background: #f5f5f5;
 }
 
+/*TODO improve*/
+.entry-content img{
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;

@@ -132,7 +132,7 @@
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
                             <i class="fa fa-folder-open padding-small"></i>
-                            {{ cat | capitalize }}
+                            {{ cat }}
                             <span class="badge pull-right categorybadge">{{ articles|count }}</span>
                         </a>
                     </li>
