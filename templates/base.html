@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 {% if SOCIAL %}
-                <div class="nav-divider"></div>
+                <li class="nav-divider"></li>
                 {% for name, link in SOCIAL %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
@@ -90,7 +90,7 @@
                 </li>
                 {% for title, link in MENUITEMS %}
                 {% if loop.first%}
-                <div class="nav-divider"></div>
+                <li class="nav-divider"></li>
                 {% endif %}
                 <li>
                     <a href="{{ link }}">
@@ -100,76 +100,61 @@
                 {% endfor %}
                 
                 {% if DISPLAY_PAGES_ON_MENU %}
-                <div class="nav-divider"></div>
+                <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
                         Pages
-                        {#
-                        <span class="glyphicon glyphicon-chevron-down padding-small"></span>
-                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>
-                        #}
                     </a>
                 </li>
-                <div id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
-                    <ul>
-                        {% for p in PAGES %}
-                        <li{% if p == page %} class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ p.url }}">
-                                {{ p.menulabel|default(p.title) }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
+                    {% for p in PAGES %}
+                    <li{% if p == page %} class="active"{% endif %}>
+                        <a href="{{ SITEURL }}/{{ p.url }}">
+                            {{ p.menulabel|default(p.title) }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
                 
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
-                <div class="nav-divider"></div>
+                <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
                         Categories
-                        {#
-                        <span class="glyphicon glyphicon-chevron-down padding-small"></span>
-                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>
-                        #}
                     </a>
                 </li>
-                <div id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
-                    <ul>
-                        {% for cat, articles in categories %}
-                        <li {% if cat == category %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}">
-                                <span class="badge pull-right categorybadge">{{ articles|count }}</span>
-                                {{ cat | capitalize }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <ul id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
+                    {% for cat, articles in categories %}
+                    <li {% if cat == category %}class="active"{% endif %}>
+                        <a href="{{ SITEURL }}/{{ cat.url }}">
+                            <span class="badge pull-right categorybadge">{{ articles|count }}</span>
+                            {{ cat | capitalize }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
                 
                 {% if SOCIAL %}
-                <div class="nav-divider"></div>
+                <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-folder-open padding-small"></i>
                         Social
-                        {#
-                        <span class="glyphicon glyphicon-chevron-down padding-small"></span>
-                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>
-                        #}
                     </a>
                 </li>
-                <div id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
-                    <ul>
-                        {% for name, link in SOCIAL %}
-                        <li>
-                            <a href="{{ link }}">
-                                {{ name }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
+                    {% for name, link in SOCIAL %}
+                    <li>
+                        <a href="{{ link }}">
+                            {{ name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </ul>
         

@@ -117,7 +117,7 @@
     background: none;
 }
 
-.sidebar_submenu ul{
+ul.sidebar_submenu{
     padding-left: 0px;
     list-style: none;
     /*
