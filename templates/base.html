@@ -49,12 +49,12 @@
         <div id="sidebar-wrapper-small">
             <ul class="sidebar-nav sidebar-nav-small">
                 <li>
-                    <a href="{{ SITEURL }}/">
+                    <a href="{{ SITEURL }}/" title="{{SITENAME}}">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="Recent Articles">
                         <span class="glyphicon glyphicon-th-list"></span>
                     </a>
                 </li>
@@ -68,7 +68,7 @@
                         {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
                     {% endif %}
                 <li>
-                    <a href="{{ link }}"><i class={{ iconattributes }}></i></a>
+                    <a href="{{ link }}" title="{{name}}"><i class={{ iconattributes }}></i></a>
                 </li>
                 {% endfor %}
                 {% endif %}
