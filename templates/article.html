@@ -70,6 +70,7 @@
         <div class="entry-content">
             {{ article.content }}
         </div>
+        {% include 'include/comments.html' %}
         <footer class="text-right">
             - {{article.author}}
         </footer>
