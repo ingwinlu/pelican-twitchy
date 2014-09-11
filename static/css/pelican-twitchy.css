@@ -79,6 +79,10 @@
 
 .sidebar-nav-small li {
     text-indent: 5px;
+    font-size: 18px;
+}
+.sidebar-nav-small  li:first-child {
+    margin-top: 65px;
 }
 
 .sidebar-nav li a {
@@ -102,12 +106,6 @@
     height: 65px;
     font-size: 18px;
     line-height: 60px;
-}
-
-.sidebar-nav-small > .sidebar-brand {
-    height: 170px;
-    font-size: 18px;
-    line-height: 165px;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -138,8 +136,21 @@
 .sidebar_submenu ul li.active{
     background: rgb(50, 50, 50);
     border: 5px;
+    border-left-color: #93c54b;
     border-left-style: solid;
     text-indent: 35px;
+}
+
+.nav-divider{
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 0 10px;
+}
+
+.categorybadge{
+    text-indent: 0px;
+    position: relative;
+    top: 11px;
+    right: 11px;
 }
 
 #menu-toggle {
@@ -170,17 +181,18 @@
     display: inline;
 }
 
-/*
-a span.glyphicon-chevron-down, a.collapsed span.glyphicon-chevron-up{
+
+span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     display: inline;
 }
-a.collapsed span.glyphicon-chevron-down, a span.glyphicon-chevron-up{
+.collapsed span.glyphicon-chevron-down, span.glyphicon-chevron-up{
     display: none;
 }
-*/
+
 
 .padding-small{
     padding: 5px;
+    text-indent: 0px;
 }
 
 .post-info{

@@ -9,11 +9,11 @@
                         {% include "include/article_info.html" %}
                     </small>
                 </h2>
-                <div class="summary">{{ article.summary }}
-                    {#<a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">more ...</a>#}
+                <div class="summary">
+                    {{ article.summary }}
                 </div>
             </article>
             <hr/>
         {% endfor %}
     {% endif %}
-{% endblock content %}
+{% endblock %}

@@ -48,9 +48,14 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper-small">
             <ul class="sidebar-nav sidebar-nav-small">
-                <li class="sidebar-brand">
+                <li>
                     <a href="{{ SITEURL }}/">
                         <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                        <span class="glyphicon glyphicon-th-list"></span>
                     </a>
                 </li>
             </ul>
@@ -63,23 +68,32 @@
                         {{ SITENAME }}
                     </a>
                 </li>
+                <li>
+                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                        <span class="glyphicon glyphicon-th-list padding-small"></span>
+                        Recent Articles
+                    </a>
+                </li>
                 {% for title, link in MENUITEMS %}
+                {% if loop.first%}
+                <div class="nav-divider"></div>
+                {% endif %}
                 <li>
                     <a href="{{ link }}">
                         {{ title }}
                     </a>
                 </li>
-                {% if loop.last %}
-                <li class="divider"></li>
-                {% endif %}
                 {% endfor %}
                 
                 {% if DISPLAY_PAGES_ON_MENU %}
+                <div class="nav-divider"></div>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
                         Pages
-                        {#<span class="glyphicon glyphicon-chevron-down padding-small"></span>
-                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>#}
+                        {#
+                        <span class="glyphicon glyphicon-chevron-down padding-small"></span>
+                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>
+                        #}
                     </a>
                 </li>
                 <div id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
@@ -96,18 +110,22 @@
                 {% endif %}
                 
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
+                <div class="nav-divider"></div>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
                         Categories
-                        {#<span class="glyphicon glyphicon-chevron-down padding-small"></span>
-                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>#}
+                        {#
+                        <span class="glyphicon glyphicon-chevron-down padding-small"></span>
+                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>
+                        #}
                     </a>
                 </li>
                 <div id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
                     <ul>
-                        {% for cat, null in categories %}
+                        {% for cat, articles in categories %}
                         <li {% if cat == category %}class="active"{% endif %}>
                             <a href="{{ SITEURL }}/{{ cat.url }}">
+                                <span class="badge pull-right categorybadge">{{ articles|count }}</span>
                                 {{ cat | capitalize }}
                             </a>
                         </li>
@@ -130,6 +148,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                    {% block precontent %}
+                    {% endblock %}
                     {% block content %}
                     {% endblock %}
                     </div>

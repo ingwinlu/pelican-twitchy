@@ -1,2 +1,11 @@
-{% extends "include/article_list.html" %}
+{% extends "base.html" %}
+{% block title %}Welcome - {{ SITENAME }}{% endblock %}
 
+{% block content %}
+<section id="content" class="body">
+    <h1 class="entry-title">Landing Page</h1>
+    <div class="entry-content">
+        welcome message bla bla
+    </div>
+</section>
+{% endblock %}
