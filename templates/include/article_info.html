@@ -1,12 +1,12 @@
 <footer class="post-info">
     <div id="publish-info" class="publish-info-block">
-        <span class="label label-default">Date</span>
+        {#<span class="label label-default">Date</span>#}
         <span class="published">
             <i class="fa fa-calendar"></i><time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
         </span>
     </div>
     <div id="author-info" class="publish-info-block">
-        <span class="label label-default">By</span>
+        {#<span class="label label-default">By</span>#}
         <a href="{{ SITEURL }}/{{ article.author.url }}"><i class="fa fa-user"></i> {{ article.author }}</a>
     </div>
     {% if PDF_PROCESSOR %}
