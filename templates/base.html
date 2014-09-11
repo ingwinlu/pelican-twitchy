@@ -60,15 +60,15 @@
                 </li>
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
-                {% for name, link in SOCIAL %}
+                {% for name, link in SOCIAL|sort(attribute='0') %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
-                        {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' %}
                     {% else %}
-                        {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
                     {% endif %}
                 <li>
-                    <a href="{{ link }}" title="{{name}}"><i class={{ iconattributes }}></i></a>
+                    <a href="{{ link }}" title="{{name}}"><i class="{{ iconattributes }} padding-small"></i></a>
                 </li>
                 {% endfor %}
                 {% endif %}
@@ -111,6 +111,7 @@
                     {% for p in PAGES %}
                     <li{% if p == page %} class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ p.url }}">
+                            <i class="fa fa-file-text padding-small"></i>
                             {{ p.menulabel|default(p.title) }}
                         </a>
                     </li>
@@ -130,8 +131,9 @@
                     {% for cat, articles in categories %}
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
-                            <span class="badge pull-right categorybadge">{{ articles|count }}</span>
+                            <i class="fa fa-folder-open padding-small"></i>
                             {{ cat | capitalize }}
+                            <span class="badge pull-right categorybadge">{{ articles|count }}</span>
                         </a>
                     </li>
                     {% endfor %}
@@ -147,9 +149,16 @@
                     </a>
                 </li>
                 <ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
-                    {% for name, link in SOCIAL %}
+                    {% for name, link in SOCIAL|sort(attribute='0') %}
+                    {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
+                    {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
+                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' %}
+                    {% else %}
+                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
+                    {% endif %}
                     <li>
-                        <a href="{{ link }}">
+                        <a href="{{ link }}" title="{{name}}">
+                            <i class="{{ iconattributes }} padding-small"></i>
                             {{ name }}
                         </a>
                     </li>
@@ -160,8 +169,8 @@
         
             <!-- open/close sidebar -->
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                <span id="right-arrow" class="glyphicon glyphicon-chevron-right"></span>
-                <span id="left-arrow" class="glyphicon glyphicon-chevron-left"></span>
+                <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+                <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
             </a>
         </div>
         <!-- /#sidebar-wrapper -->
