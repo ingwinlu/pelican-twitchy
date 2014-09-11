@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Welcome - {{ SITENAME }}{% endblock %}
 
-{% block content %}
+{% block precontent %}
 <section id="content" class="body">
-    <h1 class="entry-title">Landing Page</h1>
+    <header class="page-header">
+        <h1 class="entry-title">Welcome to {{ SITENAME }}</h1>
+    </header>
     <div class="entry-content">
-        welcome message bla bla
+       This is a placeholder for an awesome landing page, for now, why don't you take a look at something else?
     </div>
 </section>
 {% endblock %}

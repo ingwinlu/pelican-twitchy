@@ -1,8 +1,19 @@
 <footer class="post-info">
     <div id="publish-info" class="publish-info-block">
         <span class="published">
-            <i class="fa fa-calendar"></i><time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
+            <i class="fa fa-calendar padding-small"></i><time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
         </span>
+        <span class="category">
+            <i class="fa fa-folder-open padding-small"></i><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        </span>
+        {% if article.tags %}
+        <span class="tags">
+            <i class="fa fa-tags padding-small"></i>
+        {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %} / {% endif %}
+        {% endfor %}
+        </span>
+        {% endif %}
     </div>
     {% if PDF_PROCESSOR %}
     <div id="pdf-info" class="publish-info-block">

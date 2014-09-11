@@ -125,7 +125,7 @@ ul.sidebar_submenu{
     font-size: 12px;*/
 }
 
-.sidebar_submenu li{
+ul.sidebar_submenu li{
     text-indent: 40px;
     list-style: none;
     /*
@@ -133,7 +133,7 @@ ul.sidebar_submenu{
     font-size: 12px;*/
 }
 
-.sidebar_submenu ul li.active{
+ul.sidebar_submenu li.active{
     background: rgb(50, 50, 50);
     border: 5px;
     border-left-color: #93c54b;
