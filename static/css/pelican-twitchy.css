@@ -20,7 +20,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #272724;
     /*
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -37,7 +37,7 @@
     height: 100%;
     margin-left: -40px;
     overflow-y: auto;
-    background: #000;
+    background: #272724;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -136,24 +136,53 @@
 }
 
 .sidebar_submenu ul li.active{
-    background: rgb(21, 21, 21);
+    background: rgb(50, 50, 50);
     border: 5px;
     border-left-style: solid;
     text-indent: 35px;
 }
 
 #menu-toggle {
+    background-color: #71726B;
     position: fixed;
     top: 10px;
+    bottom: auto;
     left: 20px;
     z-index: 1001;
 }
 
+#wrapper #menu-toggle #right-arrow{
+    display: inline;
+}
+#wrapper #menu-toggle #left-arrow{
+    display: none;
+}
+
 #wrapper.toggled #menu-toggle {
-    position: fixed;
-    top: 10px;
+    /*bottom: 10px;*/
     left: 230px;
-    z-index: 1001;
+}
+
+#wrapper.toggled #menu-toggle #right-arrow{
+    display: none;
+}
+#wrapper.toggled #menu-toggle #left-arrow{
+    display: inline;
+}
+
+
+
+.post-info{
+    display: inline-block;
+}
+
+.publish-info-block{
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.highlight pre, .highlighttable pre {
+    background: #f5f5f5;
 }
 
 @media(min-width:768px) {
@@ -184,9 +213,24 @@
     
     #menu-toggle {
         left: 230px;
+        /*bottom: 10px;*/
+    }
+    
+    #wrapper #menu-toggle #right-arrow{
+        display: none;
+    }
+    #wrapper #menu-toggle #left-arrow{
+        display: inline;
     }
 
     #wrapper.toggled #menu-toggle {
         left: 20px;
+        bottom: auto;
+    }
+    #wrapper.toggled #menu-toggle #right-arrow{
+        display: inline;
+    }
+    #wrapper.toggled #menu-toggle #left-arrow{
+        display: none;
     }
 }

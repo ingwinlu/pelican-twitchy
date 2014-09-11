@@ -18,6 +18,12 @@
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css"/>
     {% endif %}
     <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
+    
+    {% if TYPOGRIFY %}
+        <link href="{{ SITEURL }}/theme/css/typogrify.css" rel="stylesheet">
+    {% endif %}
     <link href="/theme/css/pelican-twitchy.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,6 +32,16 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- Feeds -->
+    {% if FEED_ALL_ATOM %}
+        <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
+              title="{{ SITENAME }} ATOM Feed"/>
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+        <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate"
+              title="{{ SITENAME }} RSS Feed"/>
+    {% endif %}
 </head>
 <body>
     <div id="wrapper">
@@ -46,7 +62,6 @@
                         {{ SITENAME }}
                     </a>
                 </li>
-                <
                 {% for title, link in MENUITEMS %}
                 <li>
                     <a href="{{ link }}">
@@ -100,12 +115,15 @@
                 {% endblock %}
                 {% endif %}
             </ul>
+        
+            <!-- open/close sidebar -->
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                <span id="right-arrow" class="glyphicon glyphicon-chevron-right"></span>
+                <span id="left-arrow" class="glyphicon glyphicon-chevron-left"></span>
+            </a>
         </div>
         <!-- /#sidebar-wrapper -->
-        <!-- open/close sidebar -->
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-            <span class="glyphicon glyphicon-resize-horizontal"></span>
-        </a>
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -116,6 +134,7 @@
                     </div>
                 </div>
             </div>
+            {% include "include/footer.html" %}
         </div>
         <!-- /#page-content-wrapper -->
     </div>

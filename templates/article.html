@@ -79,14 +79,12 @@
                    title="Permalink to {{ article.title|striptags }}">
                     {{ article.title }}
                 </a>
+                <small>
+                {% include "include/article_info.html" %}
+                </small>
             </h1>
         </header>
         <div class="entry-content">
-            <div class="panel">
-                <div class="panel-body">
-                    article info
-                </div>
-            </div>
             {{ article.content }}
         </div>
         <!-- /.entry-content -->
