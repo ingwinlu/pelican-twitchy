@@ -170,7 +170,18 @@
     display: inline;
 }
 
+/*
+a span.glyphicon-chevron-down, a.collapsed span.glyphicon-chevron-up{
+    display: inline;
+}
+a.collapsed span.glyphicon-chevron-down, a span.glyphicon-chevron-up{
+    display: none;
+}
+*/
 
+.padding-small{
+    padding: 5px;
+}
 
 .post-info{
     display: inline-block;

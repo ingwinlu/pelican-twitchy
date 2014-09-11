@@ -33,24 +33,7 @@
 <link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">
 {% endblock %}
 
-{% block collapse_pages %}
-<li>
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
-        Pages
-    </a>
-</li>
-<div id="collapse-pages" class="sidebar_submenu"><!-- should not start collapsed if active -->
-    <ul>
-        {% for p in PAGES %}
-        <li{% if p == page %} class="active"{% endif %}>
-            <a href="{{ SITEURL }}/{{ p.url }}">
-                {{ p.menulabel|default(p.title) }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}
+{% block collapse_pages %}in{% endblock %}
 
 {% block content %}
     <section id="content" class="body">

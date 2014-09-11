@@ -59,6 +59,7 @@
             <ul id="accordion" class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="{{ SITEURL }}/">
+                        <span class="glyphicon glyphicon-home padding-small"></span>
                         {{ SITENAME }}
                     </a>
                 </li>
@@ -74,13 +75,14 @@
                 {% endfor %}
                 
                 {% if DISPLAY_PAGES_ON_MENU %}
-                {% block collapse_pages %}
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
                         Pages
+                        {#<span class="glyphicon glyphicon-chevron-down padding-small"></span>
+                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>#}
                     </a>
                 </li>
-                <div id="collapse-pages" class="sidebar_submenu collapse"><!-- should not start collapsed if active -->
+                <div id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
                     <ul>
                         {% for p in PAGES %}
                         <li{% if p == page %} class="active"{% endif %}>
@@ -91,17 +93,17 @@
                         {% endfor %}
                     </ul>
                 </div>
-                {% endblock %}
                 {% endif %}
                 
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% block collapse_categories %}
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
                         Categories
+                        {#<span class="glyphicon glyphicon-chevron-down padding-small"></span>
+                        <span class="glyphicon glyphicon-chevron-up padding-small"></span>#}
                     </a>
                 </li>
-                <div id="collapse-categories" class="sidebar_submenu collapse"><!-- should not start collapsed if active -->
+                <div id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
                     <ul>
                         {% for cat, null in categories %}
                         <li {% if cat == category %}class="active"{% endif %}>
@@ -112,7 +114,6 @@
                         {% endfor %}
                     </ul>
                 </div>
-                {% endblock %}
                 {% endif %}
             </ul>
         

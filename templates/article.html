@@ -50,24 +50,7 @@
 <link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">
 {% endblock %}
 
-{% block collapse_categories %}
-<li>
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
-        Categories
-    </a>
-</li>
-<div id="collapse-categories" class="sidebar_submenu"><!-- should not start collapsed if active -->
-    <ul>
-        {% for cat, null in categories %}
-        <li {% if cat == category %}class="active"{% endif %}>
-            <a href="{{ SITEURL }}/{{ cat.url }}">
-                {{ cat | capitalize }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}
+{% block collapse_categories %}in{% endblock %}
 
 {% block content %}
 <section id="content">
