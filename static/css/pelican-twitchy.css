@@ -133,17 +133,11 @@
 ul.sidebar_submenu{
     padding-left: 0px;
     list-style: none;
-    /*
-    height: 20px;
-    font-size: 12px;*/
 }
 
 ul.sidebar_submenu li{
     text-indent: 40px;
     list-style: none;
-    /*
-    height: 20px;
-    font-size: 12px;*/
 }
 
 ul.sidebar_submenu li.active{
@@ -152,6 +146,10 @@ ul.sidebar_submenu li.active{
     border-left-color: #93c54b;
     border-left-style: solid;
     text-indent: 35px;
+}
+
+ul.sidebar_submenu>li>a>i.padding-small{
+    padding-left: 0px;
 }
 
 .nav-divider{

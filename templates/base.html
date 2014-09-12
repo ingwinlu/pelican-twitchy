@@ -92,7 +92,6 @@
                     </li>
                 </ul></li>
                 {% endif %}
-                
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
                 <li>
@@ -124,12 +123,39 @@
                         {{ SITENAME }}
                     </a>
                 </li>
-                <li>
-                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-                        <span class="glyphicon glyphicon-th-list padding-small"></span>
-                        Recent Articles
-                    </a>
-                </li>
+                {% if DISPLAY_RECENT_POSTS_ON_MENU %}
+                    {% if RECENT_POST_COUNT is not defined %}
+                        {% set RECENT_POST_COUNT = 5 %}
+                    {% endif %}
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse {% block collapse_latest %}{% endblock %}">
+                    {% for article in articles[:RECENT_POST_COUNT] %}
+                        <li>
+                            <a href="{{ SITEURL }}/{{ article.url }}" title="{{ article.title }}">
+                                {{ article.title | truncate(length=25) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                {% else %}
+                    <li>
+                        <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                {% endif %}
                 {% if SHARE and (article or page) %}
                 {% set share_url = SITEURL + (article.url if article else page.url) %}
                 
@@ -159,6 +185,31 @@
                             Twitter
                         </a>
                     </li>
+                </ul></li>
+                {% endif %}
+                {% if SOCIAL %}
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Social
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
+                    {% for name, link in SOCIAL|sort(attribute='0') %}
+                    {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
+                    {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
+                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' %}
+                    {% else %}
+                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
+                    {% endif %}
+                    <li>
+                        <a href="{{ link }}" title="{{name}}">
+                            <i class="{{ iconattributes }} padding-small"></i>
+                            {{ name }}
+                        </a>
+                    </li>
+                    {% endfor %}
                 </ul></li>
                 {% endif %}
                 {% for title, link in MENUITEMS %}
@@ -213,26 +264,24 @@
                 </ul></li>
                 {% endif %}
                 
-                {% if SOCIAL %}
+                {% if DISPLAY_TAGS_ON_MENU %}
+                    {% if DISPLAY_TAGS_INLINE %}
+                        {% set tags = tag_cloud | sort(attribute='0') %}
+                    {% else %}
+                        {% set tags = tag_cloud | sort(attribute='1') %}
+                    {% endif %}
                 <li class="nav-divider"></li>
                 <li>
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
-                        <i class="fa fa-users padding-small"></i>
-                        Social
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-tags">
+                        <i class="fa fa-tags padding-small"></i>
+                        Tags
                     </a>
                 </li>
-                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
-                    {% for name, link in SOCIAL|sort(attribute='0') %}
-                    {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
-                    {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
-                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' %}
-                    {% else %}
-                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
-                    {% endif %}
-                    <li>
-                        <a href="{{ link }}" title="{{name}}">
-                            <i class="{{ iconattributes }} padding-small"></i>
-                            {{ name }}
+                <li class="panel anti-panel"><ul id="collapse-tags" class="sidebar_submenu collapse {% block collapse_tags %}{% endblock %}">
+                    {% for tag in tags %}
+                    <li class="tag-{{ tag.1 }}">
+                        <a href="{{ SITEURL }}/{{ tag.0.url }}">
+                            {{ tag.0 }}
                         </a>
                     </li>
                     {% endfor %}
@@ -275,7 +324,7 @@
         $("#wrapper").toggleClass("toggled");
     });
     {#
-    $("#share-small").click(function(e) {
+    $("#twitter-popover").click(function(e) {
         if (typeof (twttr) == 'undefined'){
             $.getScript('http://platform.twitter.com/widgets.js');
         } else {
