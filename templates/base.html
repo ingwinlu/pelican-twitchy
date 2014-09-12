@@ -72,7 +72,7 @@
                         <i class="fa fa-share-alt padding-small"></i>
                     </a>
                 </li>
-                <ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
+                <li><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}} target="popup"">
                             <i class="fa fa-facebook-square padding-small"></i>
@@ -88,7 +88,7 @@
                             <i class="fa fa-twitter-square padding-small"></i>
                         </a>
                     </li>
-                </ul>
+                </ul></li>
                 {% endif %}
                 
                 {% if SOCIAL %}
@@ -98,7 +98,7 @@
                         <i class="fa fa-users padding-small"></i>
                     </a>
                 </li>
-                <ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
+                <li><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
                 {% for name, link in SOCIAL|sort(attribute='0') %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
@@ -110,7 +110,7 @@
                         <a href="{{ link }}" title="{{name}}"><i class="{{ iconattributes }} padding-small"></i></a>
                     </li>
                 {% endfor %}
-                </ul>
+                </ul></li>
                 {% endif %}
             </ul>
         </div>
@@ -147,7 +147,7 @@
                         Pages
                     </a>
                 </li>
-                <ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
+                <li><ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
                     {% for p in PAGES %}
                     <li{% if p == page %} class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ p.url }}">
@@ -156,7 +156,7 @@
                         </a>
                     </li>
                     {% endfor %}
-                </ul>
+                </ul></li>
                 {% endif %}
                 
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
@@ -167,7 +167,7 @@
                         Categories
                     </a>
                 </li>
-                <ul id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
+                <li><ul id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
                     {% for cat, articles in categories %}
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
@@ -177,7 +177,7 @@
                         </a>
                     </li>
                     {% endfor %}
-                </ul>
+                </ul></li>
                 {% endif %}
                 
                 {% if SOCIAL %}
@@ -188,7 +188,7 @@
                         Social
                     </a>
                 </li>
-                <ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
+                <li><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
                     {% for name, link in SOCIAL|sort(attribute='0') %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
@@ -203,10 +203,9 @@
                         </a>
                     </li>
                     {% endfor %}
-                </ul>
+                </ul></li>
                 {% endif %}
             </ul>
-        
             <!-- open/close sidebar -->
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
                 <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>

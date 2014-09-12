@@ -93,7 +93,7 @@
 .sidebar-nav-small>li>a:not(.collapsed) .padding-small {
     padding-left: 2px;
 }
-.sidebar-nav-small>ul{
+.sidebar-nav-small>li>ul{
     padding-left: 0px;
     list-style: none;
 }
