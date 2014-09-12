@@ -228,6 +228,14 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     padding: 10px;
 }
 
+.anti-panel{
+    margin-bottom: 0px;
+    background-color: #272724;
+    border: 0px;
+    -webkit-box-shadow: 0 0 0 0;
+    box-shadow 0 0 0 0;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;

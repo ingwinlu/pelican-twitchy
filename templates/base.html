@@ -65,21 +65,23 @@
                 <li class="nav-divider"></li>
                 {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="glyphicon glyphicon-th-list"></span>') }}
                 
-                {% if SHARE %}
+                {% if SHARE and (article or page) %}
+                {% set share_url = SITEURL + (article.url if article else page.url) %}
+                
                 <li class="nav-divider"></li>
                 <li id="share-small">
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
                         <i class="fa fa-share-alt padding-small"></i>
                     </a>
                 </li>
-                <li><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}} target="popup"">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup"">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url={{URL}}" target="popup">
+                        <a href="https://plus.google.com/share?url={{share_url}}" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -98,7 +100,7 @@
                         <i class="fa fa-users padding-small"></i>
                     </a>
                 </li>
-                <li><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
                 {% for name, link in SOCIAL|sort(attribute='0') %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
@@ -128,6 +130,37 @@
                         Recent Articles
                     </a>
                 </li>
+                {% if SHARE and (article or page) %}
+                {% set share_url = SITEURL + (article.url if article else page.url) %}
+                
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse {% block collapse_share %}{% endblock %}">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup"">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url={{share_url}}" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                {% endif %}
                 {% for title, link in MENUITEMS %}
                 {% if loop.first%}
                 <li class="nav-divider"></li>
@@ -147,7 +180,7 @@
                         Pages
                     </a>
                 </li>
-                <li><ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
                     {% for p in PAGES %}
                     <li{% if p == page %} class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ p.url }}">
@@ -167,7 +200,7 @@
                         Categories
                     </a>
                 </li>
-                <li><ul id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse {% block collapse_categories %}{% endblock %}">
                     {% for cat, articles in categories %}
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
@@ -188,7 +221,7 @@
                         Social
                     </a>
                 </li>
-                <li><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
                     {% for name, link in SOCIAL|sort(attribute='0') %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
