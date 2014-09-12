@@ -81,8 +81,21 @@
     text-indent: 5px;
     font-size: 18px;
 }
-.sidebar-nav-small  li:first-child {
+.sidebar-nav-small>li:first-child {
     margin-top: 65px;
+}
+.sidebar-nav-small>li>a:not(.collapsed) {
+    background: rgb(50, 50, 50);
+    border: 3px;
+    border-left-color: #93c54b;
+    border-left-style: solid;
+}
+.sidebar-nav-small>li>a:not(.collapsed) .padding-small {
+    padding-left: 2px;
+}
+.sidebar-nav-small>ul{
+    padding-left: 0px;
+    list-style: none;
 }
 
 .sidebar-nav li a {

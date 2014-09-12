@@ -47,19 +47,26 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper-small">
-            <ul class="sidebar-nav sidebar-nav-small">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-                    <a href="{{ SITEURL }}/" title="{{SITENAME}}">
+                    <a href="{{ SITEURL }}/" title="{{SITENAME}}" class="collapsed">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </li>
+                <li class="nav-divider"></li>
                 <li>
-                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="Recent Articles">
+                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="Recent Articles" class="collapsed">
                         <span class="glyphicon glyphicon-th-list"></span>
                     </a>
                 </li>
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
                 {% for name, link in SOCIAL|sort(attribute='0') %}
                     {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
                     {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
@@ -67,10 +74,11 @@
                     {% else %}
                         {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
                     {% endif %}
-                <li>
-                    <a href="{{ link }}" title="{{name}}"><i class="{{ iconattributes }} padding-small"></i></a>
-                </li>
+                    <li>
+                        <a href="{{ link }}" title="{{name}}"><i class="{{ iconattributes }} padding-small"></i></a>
+                    </li>
                 {% endfor %}
+                </ul>
                 {% endif %}
             </ul>
         </div>
