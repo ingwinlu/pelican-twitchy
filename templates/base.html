@@ -1,4 +1,17 @@
-
+{% macro nav_small_li(href, title, content) -%}
+    <li>
+        <a href="{{href}}" title="{{title}}" class="collapsed">
+            {{content}}
+        </a>
+    </li>
+{%- endmacro %}
+{% macro nav_small_li_collapsable(href, title, content) -%}
+    <li>
+        <a href="{{href}}" title="{{title}}" class="collapsed">
+            {{content}}
+        </a>
+    </li>
+{%- endmacro %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,17 +61,36 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper-small">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
-                <li>
-                    <a href="{{ SITEURL }}/" title="{{SITENAME}}" class="collapsed">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </a>
-                </li>
+                {{ nav_small_li(SITEURL, SITENAME, '<span class="glyphicon glyphicon-home"></span>') }}
                 <li class="nav-divider"></li>
-                <li>
-                    <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="Recent Articles" class="collapsed">
-                        <span class="glyphicon glyphicon-th-list"></span>
+                {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="glyphicon glyphicon-th-list"></span>') }}
+                
+                {% if SHARE %}
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
                     </a>
                 </li>
+                <ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}} target="popup"">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url={{URL}}" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul>
+                {% endif %}
+                
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
                 <li>
@@ -210,6 +242,15 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    {#
+    $("#share-small").click(function(e) {
+        if (typeof (twttr) == 'undefined'){
+            $.getScript('http://platform.twitter.com/widgets.js');
+        } else {
+            twttr.widgets.load();
+        }
+    });
+    #}
     </script>
     {% include 'include/disqus_script.html' %}
 </body>
