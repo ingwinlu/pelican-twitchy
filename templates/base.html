@@ -66,7 +66,7 @@
                 {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="glyphicon glyphicon-th-list"></span>') }}
                 
                 {% if SHARE and (article or page) %}
-                {% set share_url = SITEURL + (article.url if article else page.url) %}
+                {% set share_url = SITEURL + '/' + (article.url if article else page.url) %}
                 
                 <li class="nav-divider"></li>
                 <li id="share-small">
