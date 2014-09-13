@@ -119,11 +119,15 @@
             <ul id="accordion" class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="{{ SITEURL }}/">
-                        <span class="glyphicon glyphicon-home padding-small"></span>
-                        {{ SITENAME }}
+                        {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
+                        {% if not HIDE_SITENAME %}
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            {{ SITENAME }}
+                        {% endif %}
                     </a>
                 </li>
                 {% if DISPLAY_RECENT_POSTS_ON_MENU %}
+                    <li class="nav-divider"></li>
                     {% if RECENT_POST_COUNT is not defined %}
                         {% set RECENT_POST_COUNT = 5 %}
                     {% endif %}
@@ -134,10 +138,11 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse {% block collapse_latest %}{% endblock %}">
-                    {% for article in articles[:RECENT_POST_COUNT] %}
-                        <li>
-                            <a href="{{ SITEURL }}/{{ article.url }}" title="{{ article.title }}">
-                                {{ article.title | truncate(length=25) }}
+                    {% for a in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
+                        <li {% if a == article %}class="active"{% endif %}>
+                            <a href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title }}">
+                                <i class="fa fa-file-text padding-small"></i>
+                                {{ a.title | truncate(length=25) }}
                             </a>
                         </li>
                     {% endfor %}
@@ -168,7 +173,7 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse {% block collapse_share %}{% endblock %}">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup"">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
@@ -333,6 +338,7 @@
     });
     #}
     </script>
+    {% include 'include/ga.html' %}
     {% include 'include/disqus_script.html' %}
 </body>
 </html>

@@ -33,7 +33,17 @@
 <link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">
 {% endblock %}
 
-{% block collapse_pages %}in{% endblock %}
+{% block collapse_latest %}
+    {% if EXPAND_LATEST_ON_INDEX and page.url == '/index.html' %}
+        in
+    {% endif %}
+{% endblock %}
+
+{% block collapse_pages %}
+    {% if not EXPAND_LATEST_ON_INDEX or page.url != '/index.html' %}
+        in
+    {% endif %}
+{% endblock %}
 
 {% block content %}
     <section id="content" class="body">
