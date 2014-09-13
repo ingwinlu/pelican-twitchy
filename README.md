@@ -13,14 +13,19 @@ It is still in early development, though it already provides more then just basi
 *    pygment support
 *    `TYPOGRIFY`support
 *    DISQUS Support (`DISQUS_SITENAME`)
+*    Google Analytics support (`GOOGLE_ANALYTICS`, `GOOGLE_ANALYTICS_UNIVERSAL`)
+*    Share Options on Articles/Pages in Menu(`SHARE`)
+*    Undocumented Stuff ( :/ ) ...
 
 #TODO
 
 *    better image support
-*    dropdown menues for small sidebar
-*    social sharing support
+*    social sharing support, maybe with lazy loaded widgets instead of simple sharer links?
+*    write documentation about settings/etc.
 
 #preview 
+##live example
+[My Blog](http://www.heroicdebugging.biz)
 ##big
 ![Preview](/preview_big.PNG)
 ##small
