@@ -49,6 +49,10 @@
 }
 
 #page-content-wrapper {
+    /*
+    position: relative;
+    z-index: 1;
+    */
     width: 100%;
     padding: 15px;
     margin-right: -40px;
@@ -171,6 +175,7 @@ ul.sidebar_submenu>li>a>i.padding-small{
     bottom: auto;
     left: 20px;
     z-index: 1001;
+    outline-style:none;
 }
 
 #wrapper #menu-toggle #right-arrow{
