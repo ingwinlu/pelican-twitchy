@@ -1,3 +1,4 @@
+{% set copy_date = (all_articles[0].date.strftime('%Y') if all_articles else articles[0].date.strftime('%Y')) %}
 <footer>
     <div class="container-fluid">
         <hr>
@@ -6,8 +7,16 @@
                 {{SITESUBTITLE}}
             </div>
             <div class="col-xs-8 text-right">
-                Built using <a href="http://docs.getpelican.com/en/latest">Pelican</a>, <a href="getbootstrap.com">Bootstrap3</a> and the <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a> theme.
+                <p>Built using <a href="http://docs.getpelican.com/en/latest">Pelican</a>, <a href="getbootstrap.com">Bootstrap3</a> and the <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a> theme.</p>
+                <p>&copy; {{ copy_date }} {{ AUTHOR }}</p>
             </div>
         </div>
+        {#
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <a href="#"><i class="fa fa-arrow-up"></i> Back to top</a>
+            </div>
+        </div>
+        #}
     </div>
 </footer>
