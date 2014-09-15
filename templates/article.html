@@ -53,27 +53,31 @@
 {% block collapse_latest %}in{% endblock %}
 
 {% block content %}
-<section id="content">
-    <article>
-        <header class="page-header">
-            <h1>
-                <a href="{{ SITEURL }}/{{ article.url }}"
-                   rel="bookmark"
-                   title="Permalink to {{ article.title|striptags }}">
-                    {{ article.title }}
-                </a>
-                <small>
-                {% include "include/article_info.html" %}
-                </small>
-            </h1>
-        </header>
-        <div class="entry-content">
-            {{ article.content }}
-        </div>
-        <footer class="text-right">
-            <p>- {{article.author}}</p>
-        </footer>
-        {% include 'include/comments.html' %}
-    </article>
-</section>
+<div class="row">
+    <div class="col-lg-12">
+        <section id="content">
+            <article>
+                <header class="page-header">
+                    <h1>
+                        <a href="{{ SITEURL }}/{{ article.url }}"
+                           rel="bookmark"
+                           title="Permalink to {{ article.title|striptags }}">
+                            {{ article.title }}
+                        </a>
+                        <small>
+                        {% include "include/article_info.html" %}
+                        </small>
+                    </h1>
+                </header>
+                <div class="entry-content">
+                    {{ article.content }}
+                </div>
+                <footer class="text-right">
+                    <p>- {{article.author}}</p>
+                </footer>
+                {% include 'include/comments.html' %}
+            </article>
+        </section>
+    </div>
+</div>
 {% endblock %}
