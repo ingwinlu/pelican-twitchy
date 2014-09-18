@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="row">
+    <div class="col-lg-12">
     {% if articles %}
         {% for article in (articles_page.object_list if articles_page else articles) %}
             <article>
@@ -19,4 +21,6 @@
         {% endfor %}
     {% endif %}
     {% include 'include/pagination.html' %}
+    </div>
+</div>
 {% endblock %}

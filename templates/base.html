@@ -306,14 +306,10 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                    {% block precontent %}
-                    {% endblock %}
-                    {% block content %}
-                    {% endblock %}
-                    </div>
-                </div>
+                {% block precontent %}
+                {% endblock %}
+                {% block content %}
+                {% endblock %}
             </div>
             {% include "include/footer.html" %}
         </div>
