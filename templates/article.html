@@ -73,7 +73,7 @@
         </div>
         <div class="row">
             <div class="col-lg-{% if article.toc %}9{% else %}12{% endif %}">
-                <div class="entry-content">
+                <div class="entry-content ">
                     {{ article.content }}
                 </div>
                 <footer class="text-right">
@@ -82,7 +82,7 @@
                 {% include 'include/comments.html' %}
             </div>
             {% if article.toc %}
-            <div class="col-lg-3 hidden-xs hidden-sm">
+            <div class="col-lg-3 hidden-xs hidden-sm" {#data-spy="affix" data-offset-top="125"#}>
                 {{article.toc}}
             </div>
             {% endif %}
