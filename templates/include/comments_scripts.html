@@ -31,13 +31,24 @@
         this.language = "{{ DEFAULT_LANG }}";
     };
     {% if DISQUS_LOAD_LATER %}
+        /*load script for comment count*/
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    
         $('#show-comments').click(function () {
             {{ load_disqus() }}
-            $('#show-comments').fadeOut()
-            $('#comments').toggleClass('hidden')
+            $('#show-comments').fadeOut();
+            /*$('#comments').toggleClass('hidden');*/
+            $('#comments').fadeIn().removeClass('hidden');
         });
     {% else %}
         {{ load_disqus() }}
     {% endif %}
-<!-- /disqus -->
 </script>
+
+<!-- /disqus -->
