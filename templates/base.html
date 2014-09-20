@@ -59,7 +59,7 @@
               title="{{ SITENAME }} RSS Feed"/>
     {% endif %}
 </head>
-<body>
+<body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper-small">
@@ -338,5 +338,7 @@
     </script>
     {% include 'include/ga.html' %}
     {% include 'include/disqus_script.html' %}
+    {% block scripts %}
+    {% endblock %}
 </body>
 </html>
