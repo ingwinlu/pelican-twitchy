@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 {% block title %}Welcome - {{ SITENAME }}{% endblock %}
 
-{% block precontent %}
+{% block content %}
 <div class="row">
     <div class="col-lg-12">
         <section id="content" class="body">
-            <header class="page-header">
-                <h1 class="entry-title">Welcome to {{ SITENAME }}</h1>
-            </header>
-            <div class="entry-content">
-               This is a placeholder for an awesome landing page, for now, why don't you take a look at something else?
+            <div class="jumbotron">  
+                <div class="row">
+                    <div class="col-sm-5 col-md-3"><img src="|filename|/images/logo.png"/></div>
+                    <div class="col-sm-7 col-md-9">
+                        <h1>}Welcome - {{ SITENAME }}</h1>
+                        <p>
+                            {{ SITESUBTITLE }}
+                        </p>
+                    <p><a href="/archives.html" class="btn btn-primary btn-lg" role="button">Latest Articles &raquo;</a></p>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 </div>
 {% endblock %}
+
+
