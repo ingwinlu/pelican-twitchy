@@ -1,13 +1,13 @@
 {% macro nav_small_li(href, title, content) -%}
     <li>
-        <a href="{{href}}" title="{{title}}" class="collapsed">
+        <a href="{{href|striptags|trim}}" title="{{title|striptags|trim}}" class="collapsed">
             {{content}}
         </a>
     </li>
 {%- endmacro %}
 {% macro nav_small_li_collapsable(href, title, content) -%}
     <li>
-        <a href="{{href}}" title="{{title}}" class="collapsed">
+        <a href="{{href|striptags|trim}}" title="{{title|striptags|trim}}" class="collapsed">
             {{content}}
         </a>
     </li>
@@ -143,9 +143,9 @@
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse {% block collapse_latest %}{% endblock %}">
                     {% for a in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
                         <li {% if a == article %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title }}">
+                            <a href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title|striptags|trim }}">
                                 <i class="fa fa-file-text padding-small"></i>
-                                {{ a.title | truncate(length=25) }}
+                                {{ a.title | striptags | trim }}
                             </a>
                         </li>
                     {% endfor %}
@@ -210,7 +210,7 @@
                         {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
                     {% endif %}
                     <li>
-                        <a href="{{ link }}" title="{{name}}">
+                        <a href="{{ link }}" title="{{name|striptags|trim}}">
                             <i class="{{ iconattributes }} padding-small"></i>
                             {{ name }}
                         </a>
