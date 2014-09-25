@@ -29,28 +29,6 @@
 </section>
 {% endblock %}
 
-{% block scripts %}
-<script>
-    function FadeInOnScroll(ObjectList){
-        ObjectList.each(function(i) {
-            var bottom_of_object = $(this).position().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-            
-            if( bottom_of_window-300 > bottom_of_object ){
-                $(this).fadeTo(750,1);
-            }
-        });
-    }
-
-    articles = $("article").fadeTo(0, 0.05);
-    FadeInOnScroll(articles)
-
-    $(window).scroll(function() {
-        FadeInOnScroll(articles)
-    });
-</script>
-{% endblock %}
-
 {#
         <div class="col-lg-12">
             <div class="jumbotron">  
