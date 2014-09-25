@@ -30,4 +30,5 @@ It is still in early development, though it already provides more then just basi
 ![Preview](/preview_big.PNG)
 ##small
 ![Preview](/preview_small.PNG)
-
+##article with toc
+![Preview](/preview_article.PNG)
