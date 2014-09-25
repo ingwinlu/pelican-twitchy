@@ -106,6 +106,10 @@
     display: block;
     text-decoration: none;
     color: #999999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
 }
 
 .sidebar-nav li a:hover {
@@ -276,17 +280,41 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     box-shadow: 0 0 0 0;
 }
 
+.notextdecoration{
+    text-decoration: none;
+}
+
 .container-carousel{
     width: 100%;
-    height: 400px;
+    height: 600px;
 }
 
 .container-carousel-one{
-    background-color: yellow;
+    background-color: #93c54b;
 }
-
 .container-carousel-two{
-    background-color: blue;
+    background-color: #29abe0;
+}
+.container-carousel-three{
+    background-color: #f47c3c;
+}
+#carousel-content .nav a small {
+    display: block;
+}
+#carousel-content .nav {
+    background: #eee;
+}
+.nav-justified > li > a {
+    border-radius: 0px;
+}
+.nav-pills > li[data-slide-to="0"].active a {
+    background-color: #93c54b;
+}
+.nav-pills > li[data-slide-to="1"].active a {
+    background-color: #29abe0;
+}
+.nav-pills > li[data-slide-to="2"].active a {
+    background-color: #f47c3c;
 }
 
 @media(min-width:768px) {
@@ -304,6 +332,7 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
 
     #wrapper.toggled #sidebar-wrapper {
         width: 0;
+        /*transition: all 0.4s ease 0s;*/
     }
 
     #page-content-wrapper {
