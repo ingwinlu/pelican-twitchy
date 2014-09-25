@@ -1,25 +1,73 @@
-{% extends "base.html" %}
+{% extends "include/article_list.html" %}
 {% block title %}Welcome - {{ SITENAME }}{% endblock %}
 
-{% block content %}
-<div class="row">
-    <div class="col-lg-12">
-        <section id="content" class="body">
+{% block canonical_rel %}
+<link rel="canonical" href="{{ SITEURL }}">
+{% endblock %}
+
+{% block collapse_latest %}in{% endblock %}
+
+{% block precontent %}
+<section id="content" class="body">
+    <div class="row">
+        <div class="col-lg-12">
             <div class="jumbotron">  
                 <div class="row">
-                    <div class="col-sm-5 col-md-3"><img src="|filename|/images/logo.png"/></div>
-                    <div class="col-sm-7 col-md-9">
-                        <h1>}Welcome - {{ SITENAME }}</h1>
-                        <p>
-                            {{ SITESUBTITLE }}
-                        </p>
-                    <p><a href="/archives.html" class="btn btn-primary btn-lg" role="button">Latest Articles &raquo;</a></p>
+                    <div class="col-lg-12">
+                        <h1>Welcome - {{ SITENAME }}</h1>
+                        <p>{{ SITESUBTITLE }}</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Latest Articles:</h2>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
+{% block scripts %}
+<script>
+    function FadeInOnScroll(ObjectList){
+        ObjectList.each(function(i) {
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+            if( bottom_of_window-300 > bottom_of_object ){
+                $(this).fadeTo(750,1);
+            }
+        });
+    }
 
+    articles = $("article").fadeTo(0, 0.05);
+    FadeInOnScroll(articles)
+
+    $(window).scroll(function() {
+        FadeInOnScroll(articles)
+    });
+</script>
+{% endblock %}
+
+{#
+        <div class="col-lg-12">
+            <div class="jumbotron">  
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img class="centerimage" src="http://placehold.it/200&text=placeholder"/>
+                    </div>
+                    <div class="col-lg-8">
+                        <h1>Welcome - {{ SITENAME }}</h1>
+                        <p>
+                            {{ SITESUBTITLE }}
+                        <p>
+                        <p>
+                            <a href="/pages/about.html" class="btn btn-primary btn-lg" role="button">More &raquo;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+#}

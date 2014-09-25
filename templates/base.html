@@ -68,7 +68,7 @@
                 <li class="nav-divider"></li>
                 {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="glyphicon glyphicon-th-list"></span>') }}
                 
-                {% if SHARE and (article or page) %}
+                {% if SHARE %}
                 <li class="nav-divider"></li>
                 <li id="share-small">
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
@@ -164,7 +164,7 @@
                         </a>
                     </li>
                 {% endif %}
-                {% if SHARE and (article or page) %}
+                {% if SHARE %}
                 <li class="nav-divider"></li>
                 <li id="share">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
