@@ -8,9 +8,7 @@
             <article>
                 <h2>
                     <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-                    <small>
-                        {% include "include/article_info.html" %}
-                    </small>
+                    {% include "include/article_info.html" %}
                 </h2>
                 <div class="summary">
                     {{ article.summary }}
@@ -32,7 +30,7 @@
         ObjectList.each(function(i) {
             var bottom_of_object = $(this).position().top + $(this).outerHeight();
             var bottom_of_window = $(window).scrollTop() + $(window).height();
-            
+
             if( bottom_of_window > bottom_of_object ){
                 $(this).fadeTo(750,1);
             }
