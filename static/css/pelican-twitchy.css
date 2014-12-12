@@ -103,10 +103,13 @@
     display: block;
     text-decoration: none;
     color: #999999;
+    padding-right: 10px;
+}
+
+.hide-overflow{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-right: 10px;
 }
 
 .sidebar-nav li a:hover {

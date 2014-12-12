@@ -12,6 +12,18 @@
         </a>
     </li>
 {%- endmacro %}
+{% macro get_icon_attributes(name) -%}
+    {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
+    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] -%}
+        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' -%}
+    {%- else -%}
+        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' -%}
+    {%- endif -%}
+    {%- if name|lower == 'email' -%}
+        {%- set iconattributes = 'fa fa-envelope-square fa-lg' -%}
+    {%- endif -%}
+    {{iconattributes}}
+{%- endmacro %}
 {% if article or page %}
     {% set share_url = (SITEURL + '/' + (article.url if article else page.url)) %}
 {% endif %}
@@ -102,14 +114,8 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
                 {% for name, link in SOCIAL|sort(attribute='0') %}
-                    {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
-                    {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
-                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' %}
-                    {% else %}
-                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
-                    {% endif %}
                     <li>
-                        <a href="{{ link }}" title="{{name}}"><i class="{{ iconattributes }} padding-small"></i></a>
+                        <a href="{{ link }}" title="{{name}}"><i class="{{get_icon_attributes(name|striptags|trim)}} padding-small"></i></a>
                     </li>
                 {% endfor %}
                 </ul></li>
@@ -122,7 +128,7 @@
             <ul id="accordion" class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="{{ SITEURL }}/">
-                        {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
+                        {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}" alt="Sitelogo"/> {% endif %}
                         {% if not HIDE_SITENAME %}
                             <span class="glyphicon glyphicon-home padding-small"></span>
                             {{ SITENAME }}
@@ -142,8 +148,8 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse {% block collapse_latest %}{% endblock %}">
                     {% for a in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
-                        <li {% if a == article %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title|striptags|trim }}">
+                        <li class="{% if a == article %}active{% endif %}">
+                            <a class="hide-overflow" href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title|striptags|trim }}">
                                 <i class="fa fa-file-text padding-small"></i>
                                 {{ a.title | striptags | trim }}
                             </a>
@@ -198,20 +204,14 @@
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
                         <i class="fa fa-users padding-small"></i>
-                        Social
+                        Contact
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
                     {% for name, link in SOCIAL|sort(attribute='0') %}
-                    {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
-                    {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] %}
-                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' %}
-                    {% else %}
-                        {% set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' %}
-                    {% endif %}
                     <li>
                         <a href="{{ link }}" title="{{name|striptags|trim}}">
-                            <i class="{{ iconattributes }} padding-small"></i>
+                            <i class="{{get_icon_attributes(name|striptags|trim)}} padding-small"></i>
                             {{ name }}
                         </a>
                     </li>
