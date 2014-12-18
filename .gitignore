@@ -11,3 +11,5 @@ output
 *.ipr
 *.iml
 *.iws
+
+build
