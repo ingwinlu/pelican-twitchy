@@ -243,10 +243,11 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     display: inline-block;
     margin-top: 10px;
 }
-
+/*
 .highlight pre, .highlighttable pre {
     background: #f5f5f5;
 }
+*/
 
 .affix {
     display: none;
