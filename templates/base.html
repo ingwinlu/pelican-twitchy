@@ -320,22 +320,8 @@
     <script src="/theme/js/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/theme/js/bootstrap.min.js"></script>
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    {#
-    $("#twitter-popover").click(function(e) {
-        if (typeof (twttr) == 'undefined'){
-            $.getScript('http://platform.twitter.com/widgets.js');
-        } else {
-            twttr.widgets.load();
-        }
-    });
-    #}
-    </script>
+    <!-- twitchy Script -->
+    <script src="/theme/js/pelican_twitchy.js"></script>
     {% include 'include/ga.html' %}
     {% block scripts %}
     {% endblock %}
