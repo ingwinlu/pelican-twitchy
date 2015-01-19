@@ -52,7 +52,7 @@
     {% if TYPOGRIFY %}
         <link href="{{ SITEURL }}/theme/css/typogrify.css" rel="stylesheet">
     {% endif %}
-    <link href="/theme/css/pelican-twitchy.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/theme/css/pelican-twitchy.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -317,11 +317,11 @@
     </div>
     <!-- /#wrapper -->
     <!-- jQuery Version 1.11.0 -->
-    <script src="/theme/js/jquery-1.11.0.js"></script>
+    <script src="{{ SITEURL }}/theme/js/jquery-1.11.0.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="/theme/js/bootstrap.min.js"></script>
+    <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
     <!-- twitchy Script -->
-    <script src="/theme/js/pelican_twitchy.js"></script>
+    <script src="{{ SITEURL }}/theme/js/pelican_twitchy.js"></script>
     {% include 'include/ga.html' %}
     {% block scripts %}
     {% endblock %}
