@@ -221,14 +221,12 @@ ul.sidebar_submenu>li>a>i.padding-small{
     display: inline;
 }
 
-
 span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     display: inline;
 }
 .collapsed span.glyphicon-chevron-down, span.glyphicon-chevron-up{
     display: none;
 }
-
 
 .padding-small{
     padding: 5px;
@@ -329,7 +327,7 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     background: #eee;
 }
 
-.nav-justified > li > a {
+.nav-justified > li > a{
     border-radius: 0px;
 }
 .nav-pills > li[data-slide-to="0"].active a {
@@ -340,6 +338,10 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
 }
 .nav-pills > li[data-slide-to="2"].active a {
     background-color: #f47c3c;
+}
+
+#footer_license{
+    margin-top: 5px;
 }
 
 @media(min-width:768px) {
