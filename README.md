@@ -10,6 +10,7 @@ It is still in early development, though it already provides more then just basi
 *    a sweet landing page
 *    lots of space for modifications
 *    bootswatch theme support
+*    fontawesome!
 *    pygment support
 *    `TYPOGRIFY`support
 *    DISQUS Support (`DISQUS_SITENAME`)
