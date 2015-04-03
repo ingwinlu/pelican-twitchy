@@ -17,6 +17,7 @@ It is still in early development, though it already provides more then just basi
 *    Google Analytics support (`GOOGLE_ANALYTICS`, `GOOGLE_ANALYTICS_UNIVERSAL`)
 *    Share Options on Articles/Pages in Menu(`SHARE`)
 *    Undocumented Stuff ( :/ ) ...
+*    Custom CSS support (`CUSTOM_CSS`)
 
 #TODO
 
