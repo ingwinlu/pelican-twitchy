@@ -247,6 +247,7 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     border: 0px;
     border-radius: 0px;
     border-left: 4px solid;
+    padding: 0px 9.5px;
 }
 
 /*overwrite pygments color for better readability*/
