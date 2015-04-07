@@ -242,6 +242,13 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     margin-top: 10px;
 }
 
+/*dont border codesections because it might look stupid with container-fluid*/
+.highlight pre {
+    border: 0px;
+    border-radius: 0px;
+    border-left: 4px solid;
+}
+
 /*overwrite pygments color for better readability*/
 .highlight pre span.n,
 .highlight pre span.p,
