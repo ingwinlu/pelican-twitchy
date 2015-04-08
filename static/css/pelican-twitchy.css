@@ -257,6 +257,10 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
     color: #3e3f3a;
 }
 
+/*center responsive images in content*/
+#content img.img-responsive{
+    margin: 0px auto;
+}
 
 .affix {
     display: none;
