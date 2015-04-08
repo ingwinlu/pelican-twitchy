@@ -3,15 +3,15 @@
     <div class="container-fluid">
         <hr>
         <div class="row">
-            <div class="col-xs-4 text-left">
+            <div class="col-xs-3 text-left">
                 <small>{{SITESUBTITLE}}</small>
             </div>
-            <div class="col-xs-8 text-right">
+            <div class="col-xs-6 text-right">
                 <p><small>Built using <a href="http://docs.getpelican.com/en/latest">Pelican</a>, <a href="http://getbootstrap.com">Bootstrap3</a> and the <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a> theme.</small></p>
             </div>
         </div>
         <div class="row" id="footer_license">
-            <div class="col-xs-12 text-center">
+            <div class="col-xs-9 text-center">
               {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
               {% from 'include/cc-license.html' import cc_license_mark %}
                 <p><small>{{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,attr_markup=CC_ATTR_MARKUP,attr_props={'title':SITENAME,'name':article.author if article else AUTHOR,'url':SITEURL}) }}<small></p>
