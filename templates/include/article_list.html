@@ -6,20 +6,13 @@
     {% if articles %}
         {% for article in (articles_page.object_list if articles_page else articles) %}
             <article>
-                <h2>
+                <h4>
+                    <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
                     <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-                    {% include "include/article_info.html" %}
-                </h2>
-                <div class="summary">
-                    {{ article.summary }}
-                </div>
+                </h4>
             </article>
-            {% if not loop.last %}
-            <hr/>
-            {% endif %}
         {% endfor %}
     {% endif %}
-    {% include 'include/pagination.html' %}
     </div>
 </div>
 {% endblock %}

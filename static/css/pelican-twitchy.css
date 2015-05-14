@@ -1,3 +1,7 @@
+.twitchy-background{
+    background: #272724;
+}
+
 #wrapper {
     padding-left: 40px;
     /*
@@ -20,7 +24,6 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #272724;
     /*
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -37,7 +40,6 @@
     height: 100%;
     margin-left: -40px;
     overflow-y: auto;
-    background: #272724;
 }
 
 #wrapper.toggled #sidebar-wrapper {
