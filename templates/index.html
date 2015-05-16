@@ -47,9 +47,11 @@
             <hr/>
             {% endif %}
         {% endfor %}
-    <a class="btn btn-default btn-xs pull-right twitchy-background" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-        View all Articles ...
-    </a>
+        <div class="btn-more text-right">
+            <a class="btn btn-default btn-xs twitchy-background" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                View all Articles ...
+            </a>
+        </div>
     {% endif %}
     </div>
 </div>

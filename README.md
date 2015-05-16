@@ -18,6 +18,7 @@ It is still in early development, though it already provides more then just basi
 *    Share Options on Articles/Pages in Menu(`SHARE`)
 *    Undocumented Stuff ( :/ ) ...
 *    Custom CSS support (`CUSTOM_CSS`)
+*    CC License Footer (https://github.com/hlapp/cc-tools)
 
 #TODO
 
