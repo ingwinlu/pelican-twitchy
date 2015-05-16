@@ -9,7 +9,7 @@
     })();
 {%- endmacro %}
 
-
+{% if DISQUS_SITENAME %}
 <!-- disqus -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -50,5 +50,6 @@
         {{ load_disqus() }}
     {% endif %}
 </script>
-
 <!-- /disqus -->
+{% endif %}
+
