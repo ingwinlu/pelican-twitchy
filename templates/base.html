@@ -1,3 +1,7 @@
+{% if RECENT_POST_COUNT is not defined %}
+    {% set RECENT_POST_COUNT = 5 %}
+{% endif %}
+
 {% macro nav_small_li(href, title, content) -%}
     <li>
         <a href="{{href|striptags|trim}}" title="{{title|striptags|trim}}" class="collapsed">
@@ -140,9 +144,6 @@
                 </li>
                 {% if DISPLAY_RECENT_POSTS_ON_MENU %}
                     <li class="nav-divider"></li>
-                    {% if RECENT_POST_COUNT is not defined %}
-                        {% set RECENT_POST_COUNT = 5 %}
-                    {% endif %}
                     <li>
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
                             <span class="glyphicon glyphicon-th-list padding-small"></span>
@@ -309,9 +310,9 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                {% block precontent %}
+                {% block precontent scoped %}
                 {% endblock %}
-                {% block content %}
+                {% block content scoped %}
                 {% endblock %}
                 {% include "include/footer.html" %}
             </div>
