@@ -242,7 +242,7 @@
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}">
-                    {% for p in PAGES %}
+                    {% for p in pages %}
                     <li{% if p == page %} class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ p.url }}">
                             <i class="fa fa-file-text padding-small"></i>
