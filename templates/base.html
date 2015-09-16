@@ -34,29 +34,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% block meta %}
         <meta name="author" content="{{ AUTHOR }}" />
-        <meta name="description" content="{{ SITEDESCRIPTION }}">
+        <meta name="description" content="{{ SITEDESCRIPTION }}" />
     {% endblock %}
-
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
 
     {% if BOOTSTRAP_THEME %}
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
     {% else %}
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
     {% endif %}
-    <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
-    
-    <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
+
+    <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet" />
     
     {% if TYPOGRIFY %}
-    <link href="{{ SITEURL }}/theme/css/typogrify.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/theme/css/typogrify.css" rel="stylesheet" />
     {% endif %}
-    <link href="{{ SITEURL }}/theme/css/pelican-twitchy.min.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,14 +67,14 @@
     <!-- Feeds -->
     {% if FEED_ALL_ATOM %}
         <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
-              title="{{ SITENAME }} ATOM Feed"/>
+              title="{{ SITENAME }} ATOM Feed" />
     {% endif %}
     {% if FEED_ALL_RSS %}
         <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate"
-              title="{{ SITENAME }} RSS Feed"/>
+              title="{{ SITENAME }} RSS Feed" />
     {% endif %}
     {% if CUSTOM_CSS %}
-        <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet">
+        <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet" />
     {% endif %}
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
