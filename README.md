@@ -24,6 +24,8 @@ Setting name (followed by default value, if exists) | Description
 `SITESUBTITLE` | Provide a description of your site, inserted into landing page jumbatron
 `RECENT_POST_COUNT = 5` | How many post should be displayed on the landing page.
 `EXPAND_LATEST_ON_INDEX` | Expand the Latest Articles Section in the Sidebar if you are on `index.html`
+`OPEN_GRAPH = False` | Add Open Graph meta section
+`OPEN_GRAPH_IMAGE` | Url to a default image used in Open Graph, can be overwritten on article/page sites via `og_image` metadata
 
 ### more colours?
 Setting name (followed by default value, if exists) | Description

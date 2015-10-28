@@ -41,6 +41,11 @@
         <meta name="author" content="{{ AUTHOR }}" />
         <meta name="description" content="{{ SITESUBTITLE|escape }}" />
     {% endblock %}
+
+    {% if OPEN_GRAPH %}
+    {% include "include/open_graph.html" %}
+    {% endif %}
+
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
 
     {% if BOOTSTRAP_THEME %}
