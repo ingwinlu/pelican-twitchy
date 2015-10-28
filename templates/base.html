@@ -39,7 +39,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% block meta %}
         <meta name="author" content="{{ AUTHOR }}" />
-        <meta name="description" content="{{ SITEDESCRIPTION }}" />
+        <meta name="description" content="{{ SITESUBTITLE|escape }}" />
     {% endblock %}
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
 
