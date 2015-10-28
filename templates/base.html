@@ -32,7 +32,7 @@
     {% set share_url = (SITEURL + '/' + (article.url if article else page.url)) %}
 {% endif %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock %}">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
