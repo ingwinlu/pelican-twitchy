@@ -77,8 +77,8 @@ Setting name (followed by default value, if exists) | Description
 --------------------------------------------------- | -----------
 `COOKIE_CONSENT` | Set to enable Cookie warning.
 `COOKIE_CONSENT_TEXT`[^cookieConsentText] | Text that is displayed in the warning.
-`COOKIE_CONSENT_MORE_INFO="More info"` | Text for the Link pointed at by the URL setting below.
-`COOKIE_CONSENT_MORE_INFO_URL` | Set to an Url to produce a Link to this URL.
+`COOKIE_CONSENT_MORE_INFO="More info"` | Text for the link pointed at by the URL setting below.
+`COOKIE_CONSENT_MORE_INFO_URL` | Set to produce a link to this URL.
 `COOKIE_CONSENT_DISMISS="Got it!"` | Overwrite the text on the Dismissal Button.
 `COOKIE_CONSENT_THEME="dark-floating"` | Theme for the warning.
 
