@@ -1,0 +1,18 @@
+{% if COOKIE_CONSENT %}
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "{{ COOKIE_CONSENT_TEXT | default('This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.') }}",
+            learnMore: "{{ COOKIE_CONSENT_MORE_INFO | default('More info') }}",
+            {% if COOKIE_CONSENT_MORE_INFO_URL %}
+            link: "{{ COOKIE_CONSENT_MORE_INFO_URL}}",
+            {% else %}
+            link: null,
+            {% endif %}
+            dismiss: "{{ COOKIE_CONSENT_DISMISS | default('Got it!') }}",
+            theme: "{{ SITEURL }}/theme/css/cookieconsent/{{ COOKIE_CONSENT_THEME | default('dark-floating') }}.css",
+        };
+    </script>
+    <script src="{{ SITEURL }}/theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+{% endif %}
