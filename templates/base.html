@@ -279,11 +279,6 @@
                 {% endif %}
                 
                 {% if DISPLAY_TAGS_ON_MENU %}
-                    {% if DISPLAY_TAGS_INLINE %}
-                        {% set tags = tag_cloud | sort(attribute='0') %}
-                    {% else %}
-                        {% set tags = tag_cloud | sort(attribute='1') %}
-                    {% endif %}
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-tags">
