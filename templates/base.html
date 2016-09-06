@@ -20,7 +20,7 @@
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
     {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg fa-fw' -%}
     {%- if name|lower == 'email' -%}
-        {%- set iconattributes = 'fa fa-envelope-square fa-lg' -%}
+        {%- set iconattributes = 'fa fa-envelope fa-fw fa-lg' -%}
     {%- endif -%}
     {{iconattributes}}
 {%- endmacro %}
@@ -97,7 +97,7 @@
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" title="Share via Facebook" target="popup">
-                            <i class="fa fa-facebook-square padding-small"></i>
+                            <i class="fa fa-facebook fa-fw fa-lg padding-small"></i>
                         </a>
                     </li>
                     <li>
@@ -107,7 +107,7 @@
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
-                            <i class="fa fa-twitter-square padding-small"></i>
+                            <i class="fa fa-twitter fa-fw fa-lg padding-small"></i>
                         </a>
                     </li>
                 </ul></li>
@@ -185,7 +185,7 @@
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse {% block collapse_share %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup">
-                            <i class="fa fa-facebook-square padding-small"></i>
+                            <i class="fa fa-facebook fa-fw fa-lg padding-small"></i>
                             Facebook
                         </a>
                     </li>
@@ -197,7 +197,7 @@
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
-                            <i class="fa fa-twitter-square padding-small"></i>
+                            <i class="fa fa-twitter fa-fw fa-lg padding-small"></i>
                             Twitter
                         </a>
                     </li>
