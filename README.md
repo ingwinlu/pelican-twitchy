@@ -39,7 +39,7 @@ Setting name (followed by default value, if exists) | Description
 Setting name (followed by default value, if exists) | Description
 --------------------------------------------------- | -----------
 `SHARE = False` | Provide simple non tracking sharing buttons (fb, g+, twitter) for articles/pages and the landing page
-`SOCIAL` | Links to your profile on other site, complete with icon, e.g.: `SOCIAL = (('Twitter', 'https://twitter.com/derwinlu'), ('Bitbucket', 'https://bitbucket.org/winlu'))`
+`SOCIAL` | Links to your profile on other site, complete with icon, e.g.: `SOCIAL = (('Twitter', 'https://twitter.com/derwinlu'), ('Bitbucket', 'https://bitbucket.org/winlu'))`<br / >Icons supported: http://fontawesome.io/icons/<br />Other names: GitHub, GitLab, etc
 `SITELOGO` | Add a SiteLogo to your Sidebar, expects the path to the logo similar to `CUSTOM_CSS`
 `SITELOGO_SIZE` | width attribute of `SITELOGO`'s `img` tag.
 `HIDE_SITENAME` | hides the sitename from the sidebar, useful if your sitelogo already contains your sitename.
