@@ -18,11 +18,7 @@
 {%- endmacro %}
 {% macro get_icon_attributes(name) -%}
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
-    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] -%}
-        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' -%}
-    {%- else -%}
-        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' -%}
-    {%- endif -%}
+    {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg fa-fw' -%}
     {%- if name|lower == 'email' -%}
         {%- set iconattributes = 'fa fa-envelope-square fa-lg' -%}
     {%- endif -%}
