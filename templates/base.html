@@ -16,13 +16,16 @@
         </a>
     </li>
 {%- endmacro %}
-{% macro get_icon_attributes(name) -%}
+{% macro get_icon(name) -%}
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
     {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg fa-fw' -%}
     {%- if name|lower == 'email' -%}
-        {%- set iconattributes = 'fa fa-envelope fa-fw fa-lg' -%}
+        {%- set name = 'envelope' -%}
     {%- endif -%}
-    {{iconattributes}}
+<span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-{{name}} fa-stack-1x"></i>
+</span>
 {%- endmacro %}
 {% if article or page %}
     {% set share_url = (SITEURL + '/' + (article.url if article else page.url)) %}
@@ -97,17 +100,17 @@
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" title="Share via Facebook" target="popup">
-                            <i class="fa fa-facebook fa-fw fa-lg padding-small"></i>
+                            get_icon(facebook)
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/share?url={{share_url}}" title="Share via Google+" target="popup">
-                            <i class="fa fa-google-plus padding-small"></i>
+                            get_icon(google+)
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
-                            <i class="fa fa-twitter fa-fw fa-lg padding-small"></i>
+                            get_icon(twitter)
                         </a>
                     </li>
                 </ul></li>
@@ -122,7 +125,7 @@
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
                 {% for name, link in SOCIAL|sort(attribute='0') %}
                     <li>
-                        <a href="{{ link }}" title="{{name}}"><i class="{{get_icon_attributes(name|striptags|trim)}} padding-small"></i></a>
+                        <a href="{{ link }}" title="{{name}}">{{get_icon(name|striptags|trim}}</a>
                     </li>
                 {% endfor %}
                 </ul></li>
@@ -185,19 +188,19 @@
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse {% block collapse_share %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup">
-                            <i class="fa fa-facebook fa-fw fa-lg padding-small"></i>
+                            get_icon(facebook)
                             Facebook
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/share?url={{share_url}}" target="popup">
-                            <i class="fa fa-google-plus padding-small"></i>
+                            get_icon(google+)
                             Google+
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
-                            <i class="fa fa-twitter fa-fw fa-lg padding-small"></i>
+                            get_icon(twitter)
                             Twitter
                         </a>
                     </li>
@@ -215,7 +218,7 @@
                     {% for name, link in SOCIAL|sort(attribute='0') %}
                     <li>
                         <a href="{{ link }}" title="{{name|striptags|trim}}">
-                            <i class="{{get_icon_attributes(name|striptags|trim)}} padding-small"></i>
+                            {{get_icon(name|striptags|trim)}}
                             {{ name }}
                         </a>
                     </li>
