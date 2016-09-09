@@ -125,7 +125,7 @@
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
                 {% for name, link in SOCIAL|sort(attribute='0') %}
                     <li>
-                        <a href="{{ link }}" title="{{name}}">{{get_icon(name|striptags|trim}}</a>
+                        <a href="{{ link }}" title="{{name}}">{{get_icon(name|striptags|trim)}}</a>
                     </li>
                 {% endfor %}
                 </ul></li>
