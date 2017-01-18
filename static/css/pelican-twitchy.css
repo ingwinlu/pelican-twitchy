@@ -1,7 +1,3 @@
-.twitchy-background{
-    background: #272724;
-}
-
 #wrapper {
     padding-left: 40px;
     /*
@@ -310,7 +306,7 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
 
 .anti-panel{
     margin-bottom: 0px;
-    background-color: #272724;
+    background-color: transparent;
     border: 0px;
     -webkit-box-shadow: 0 0 0 0;
     box-shadow: 0 0 0 0;
