@@ -1,0 +1,34 @@
+{% if DISPLAY_TAGS_ON_MENU %}
+    {% if DISPLAY_TAGS_INLINE %}
+        {% set tags = tag_cloud | sort(attribute='0') %}
+    {% else %}
+        {% set tags = tag_cloud | sort(attribute='1') %}
+    {% endif %}
+<li class="nav-divider"></li>
+<li>
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-tags">
+    	<i class="fa fa-tags padding-small"></i>Tags
+    </a>
+</li>
+<li class="panel anti-panel"><ul id="collapse-tags" class="sidebar_submenu collapse {% block collapse_tags %}{% endblock %}">
+    {% for t in tags %}
+     {% if 'tag_cloud' in PLUGINS %}
+     <li class="{% if t.0 == tag %}active{% endif %}">
+         <a href="{{ SITEURL }}/{{ t.0.url }}">
+             <i class="fa fa-folder-open padding-small"></i>
+             {{ t.0 }}
+             {% if TAG_CLOUD_BADGE %}
+             <span class="badge pull-right categorybadge">{{ t.2 }}</span>
+             {% endif %}
+         </a>
+     </li>
+     {% else %}
+     <li class="tag-{{ tag.1 }}">
+         <a href="{{ SITEURL }}/{{ tag.0.url }}">
+             {{ tag.0 }}
+         </a>
+     </li>
+     {% endif %}
+    {% endfor %}
+</ul></li>
+{% endif %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ super() }} - Recherche 
+{% endblock title %}
+
+{% block scripts %}
+	{{ super() }}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Tipue-Search/5.0.0/tipuesearch_content.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Tipue-Search/5.0.0/tipuesearch_set.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Tipue-Search/5.0.0/tipuesearch.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#tipue_search_input').tipuesearch({
+          'mode' : 'json',
+          'show': 10,
+          'newWindow': false,
+          'contentLocation': '{{ SITEURL }}/tipuesearch_content.json'
+      });
+    });
+  </script>
+{% endblock scripts %}
+
+{% block content %}
+  <h1>Résultat de la recherche</h1>
+  <div>
+    <div id="tipue_search_content"></div>
+  </div>
+{% endblock content %}

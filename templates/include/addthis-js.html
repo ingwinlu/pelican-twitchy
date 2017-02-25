@@ -1,0 +1,23 @@
+{% if ADDTHIS_PROFILE %}
+	<script type="text/javascript">
+
+	var addthis_config = addthis_config || {};
+	addthis_config.pubid = '{{ ADDTHIS_PROFILE }}';
+	addthis_config.lang = '{{DEFAULT_LANG}}';
+	addthis_config.ui_language = '{{DEFAULT_LANG}}';
+	//addthis_config.services_exclude = '{{ADDTHIS_SERVICES_EXCLUDE|join(",")}}';
+	//addthis_config.services_compact = 'print,email,favorites';
+	
+	{% if ADDTHIS_DATA_TRACK_ADDRESSBAR|default(true) %}
+	addthis_config.data_track_addressbar = true;
+	{% endif %}
+	
+	{% if GOOGLE_ANALYTICS %}
+	addthis_config.data_ga_property = '{{GOOGLE_ANALYTICS}}';
+	addthis_config.data_ga_social = true;
+	{% endif %}
+
+	</script>
+	 
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+{% endif %}

@@ -1,0 +1,20 @@
+{% if MENUITEMS_EXTEND or MENUITEMS %}
+ {% if MENUITEMS_EXTEND %}
+  {% for item in MENUITEMS_EXTEND %}
+  <li>
+         <a href="{{ SITEURL }}/{{ item.link }}">
+             <i class="{{item.icon}} padding-small"></i>{{ item.title|striptags|trim }}
+         </a>
+  </li>
+  <li class="nav-divider"></li>
+  {% endfor %}
+ {% else %}
+  {% for title, link in MENUITEMS %}
+  <li>
+      <a href="{{ link }}">
+          {{ title }}
+      </a>
+  </li>
+  {% endfor %}
+ {% endif %}
+{% endif %}
