@@ -7,7 +7,7 @@
 <li class="nav-divider"></li>
 <li>
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-tags">
-    	<i class="fa fa-tags padding-small"></i>Tags
+    	<i class="glyphicon glyphicon-tags padding-small"></i>Tags
     </a>
 </li>
 <li class="panel anti-panel"><ul id="collapse-tags" class="sidebar_submenu collapse {% block collapse_tags %}{% endblock %}">
@@ -15,7 +15,7 @@
      {% if 'tag_cloud' in PLUGINS %}
      <li class="{% if t.0 == tag %}active{% endif %}">
          <a href="{{ SITEURL }}/{{ t.0.url }}">
-             <i class="fa fa-folder-open padding-small"></i>
+             <i class="glyphicon glyphicon-tags padding-small"></i>
              {{ t.0 }}
              {% if TAG_CLOUD_BADGE %}
              <span class="badge pull-right categorybadge">{{ t.2 }}</span>

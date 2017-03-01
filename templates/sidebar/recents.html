@@ -10,14 +10,14 @@
     {% for a in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
         <li class="{% if a == article %}active{% endif %}">
             <a class="hide-overflow" href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title|striptags|trim }}">
-                <i class="fa fa-file-text padding-small"></i>
+                <i class="glyphicon glyphicon-th-list padding-small"></i>
                 {{ a.title | striptags | trim }}
             </a>
         </li>
     {% endfor %}
     <li>
         <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-            <i class="fa fa-arrow-right padding-small"></i>
+            <i class="glyphicon glyphicon-arrow-right padding-small"></i>
             Plus d'Articles...
         </a>
     </li>

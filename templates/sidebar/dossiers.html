@@ -3,7 +3,7 @@
 <li class="nav-divider"></li>
 <li>
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
-        <i class="fa fa-folder-open padding-small"></i>
+        <i class="glyphicon glyphicon-folder-open padding-small"></i>
         Dossiers
     </a>
 </li>
@@ -11,7 +11,7 @@
     {% for p in pages %}
     <li{% if p == page %} class="active"{% endif %}>
         <a href="{{ SITEURL }}/{{ p.url }}" title="{{p.title|striptags|trim}}">
-            <i class="fa fa-file-text padding-small"></i>
+            <i class="glyphicon glyphicon-folder-open padding-small"></i>
             {{ p.menulabel|default(p.title) }}
             {#{ p.title|striptags|trim|truncate(30) }#}
         </a>

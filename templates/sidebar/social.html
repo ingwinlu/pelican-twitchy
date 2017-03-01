@@ -9,7 +9,7 @@
 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse {% block collapse_social %}{% endblock %}">
     {% for name, link in SOCIAL %}
     <li>
-        <a href="{{ link }}" title="{{name|striptags|trim}}">
+        <a target="_blank" href="{{ link }}" title="{{name|striptags|trim}}">
             <i class="{{lib.get_icon_attributes(name|striptags|trim)}} padding-small"></i>
             {{ name }}
         </a>

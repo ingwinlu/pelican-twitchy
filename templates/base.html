@@ -36,15 +36,9 @@
 	<link rel="canonical" href="{{ SITEURL }}" />
 	{% endblock %}
 	
-	{% block metas_schema %}
-	{% include 'include/schema-website.html' %}
-	{% endblock metas_schema %}
-	
-    {% if OPEN_GRAPH %}
-    {% include "include/open_graph.html" %}
+    {% if USE_OPEN_GRAPH %}
+    	{% include "include/seo.html" %}
     {% endif %}
-    
-    {% include "include/twitter-cards.html" %}
 
 	{% include "include/prev-next.html" %}
 
@@ -56,6 +50,7 @@
     {% endif %}
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/{{FONT_AWESOME_VERSION|default('4.7.0')}}/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//afeld.github.io/emoji-css/emoji.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/{{HIGHLIGHT_VERSION|default('9.9.0')}}/styles/{{HIGHLIGHT_THEME|default('dracula')}}.min.css" />
     
     {% if TYPOGRIFY %}
@@ -83,10 +78,10 @@
     {% include "include/feed.html" %}
     
 </head>
-<body data-spy="scroll" data-target="#scrollspy">
+<body {#data-spy="scroll" data-target="#scrollspy"#} itemscope itemtype="http://schema.org/WebPage">
     <div id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper-small" class="twitchy-background">
+        <div id="sidebar-wrapper-small" class="twitchy-background hidden-print">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 {{ lib.nav_small_li(SITEURL, SITENAME, '<span class="glyphicon glyphicon-home"></span>') }}
                 <li class="nav-divider"></li>
@@ -136,7 +131,7 @@
                 {{ lib.nav_small_li('#', 'Retour au début', '<span class="fa fa-arrow-up"></span>') }}
             </ul>
         </div>
-        <div id="sidebar-wrapper" class="twitchy-background">
+        <div id="sidebar-wrapper" class="twitchy-background hidden-print">
             <ul id="accordion" class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="{{ SITEURL }}/">
@@ -156,7 +151,7 @@
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- open/close sidebar -->
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+        <a href="#menu-toggle" class="btn btn-default hidden-print" id="menu-toggle">
             <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
             <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
         </a>
@@ -180,7 +175,10 @@
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/{{ BOOTSTRAP_VERSION|default('3.3.7')}}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/{{HIGHLIGHT_VERSION|default('9.9.0')}}/highlight.min.js"></script>
 	
+	{% block addthis %}
     {% include 'include/addthis-js.html' %}
+	{% endblock addthis %}
+
     <script src="{{ SITEURL }}/theme/js/pelican_twitchy.js"></script>
     {% include 'include/cookieconsent.html' %}
     {% include 'include/ga.html' %}

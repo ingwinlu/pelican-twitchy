@@ -10,16 +10,16 @@
 			<div class="media" id="index-promo">
 				<div class="media-left">
 					<a href="{{SITEURL}}" title="Accueil">
-						<img class="media-object img-thumbnail" src="{{SITEURL}}/{{THEME_STATIC_DIR}}/{{AUTHOR_IMAGE}}" alt="{{AUTHOR}}">
+						<img class="media-object" {{AUTHOR_IMAGE_ATTRS}} src="{{SITEURL}}/{{AUTHOR_IMAGE}}" alt="{{AUTHOR}}">
 					</a>
 				</div>
 				<div class="media-body">
-					<h2 class="media-heading">{{ SITENAME }}
-                        <p><small>{{ SITESUBTITLE }}</small></p>
+					<h1 class="media-heading">{{ SITENAME }}
+                        <p class="subtitle"><small>{{ SITESUBTITLE }}</small></p>
                         {% if SITESUBTITLE2 is defined %}
-                        <p><small>{{ SITESUBTITLE2 }}</small></p>
+                        <p class="subtitle2"><small>{{ SITESUBTITLE2 }}</small></p>
                         {% endif %}
-					</h2>
+					</h1>
 				</div>
 			</div>
         </div>
@@ -34,11 +34,11 @@
     	<p>&nbsp;</p>
     	{% include "include/pagination.html" %}
         {% for article in (articles_page.object_list if articles_page else articles) %}
-            <article>
+            <article class="article-list">
 				<div class="media">
-				  <div class="media-left media-middle">
+				  <div class="media-left media-top">
 				    <a href="{{ SITEURL }}/{{ article.url }}">
-				      <img class="media-object article-icons" src="{{SITEURL}}/{{THEME_STATIC_DIR}}/icons/{{loop.cycle(*ICONS)}}.png" alt="{{ article.title }}|striptags|escape" />
+				      <img class="media-object thumbnail" src="{{SITEURL}}/{{THUMBNAIL_DIR}}/category/{{article.category.slug}}_medium.jpg" alt="{{ article.title|striptags|escape }}" />
 				    </a>
 				  </div>
 				  <div class="media-body">
@@ -48,7 +48,7 @@
 				    </h3>
 				    {% if DISPLAY_SUMMARY_ON_INDEX|default(True) %}
                 	<div class="summary">
-                    	{{ article.summary }}
+                    	{{ article.summary|striptags|escape }}
                 	</div>
                 	{% endif %}
 				  </div>
@@ -64,9 +64,4 @@
     </div>
 </div>
 {% endblock %}
-
-{% block scripts %}
-	{% include "include/article-list-script.html" %}
-{% endblock %}
-
 

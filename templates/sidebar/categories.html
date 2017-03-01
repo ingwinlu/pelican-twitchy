@@ -3,7 +3,7 @@
 <li class="nav-divider"></li>
 <li>
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
-        <i class="fa fa-folder-open padding-small"></i>
+        <i class="glyphicon glyphicon-th padding-small"></i>
         Catégories
     </a>
 </li>
@@ -11,7 +11,7 @@
     {% for cat, articles in categories %}
     <li {% if cat == category %}class="active"{% endif %}>
         <a href="{{ SITEURL }}/{{ cat.url }}">
-            <i class="fa fa-folder-open padding-small"></i>
+            <i class="glyphicon glyphicon-th padding-small"></i>
             {{ cat }}
             <span class="badge pull-right categorybadge">{{ articles|count }}</span>
         </a>
