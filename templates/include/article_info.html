@@ -1,8 +1,7 @@
-<div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
+                <i class="fa fa-calendar {#padding-small#}"></i><time itemprop="dateCreated" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
@@ -17,4 +16,4 @@
             {% endif %}
         </small>
     </div>
-</div><!-- /.post-info -->
+

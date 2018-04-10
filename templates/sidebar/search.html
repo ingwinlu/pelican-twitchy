@@ -1,0 +1,12 @@
+{% if TIPUE_SEARCH %}
+<form class="navbar-form navbar-left" role="search" action="{{ SITEURL }}/search.html">
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" name="q" {#id="tipue_search_input"#} class="form-control search-query" placeholder="Rechercher" required />
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="fa fa-search fa-fw"></i></button>
+      </span>
+    </div>
+  </div>
+</form>
+{% endif %}

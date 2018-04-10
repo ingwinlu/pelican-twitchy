@@ -1,0 +1,11 @@
+{# 
+https://support.google.com/webmasters/answer/1663744?hl=fr&ref_topic=4617741 
+#}
+{% if articles_page and articles_paginator.num_pages > 1 %}
+	{% if articles_page.has_previous() %}
+		<link rel="prev" href="{{ SITEURL }}/{{ articles_previous_page.url }}" />
+	{% endif %}
+	{% if articles_page.has_next() %}
+		<link rel="next" href="{{ SITEURL }}/{{ articles_next_page.url }}" />
+	{% endif %}
+{% endif %}

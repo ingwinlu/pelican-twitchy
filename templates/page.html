@@ -58,3 +58,8 @@
 </div>
 {% endblock %}
 
+{% block addthis %}
+	{% if not page.options and not page.options == "noaddthis" %}
+   	{{super()}}
+   	{% endif %}
+{% endblock addthis %}

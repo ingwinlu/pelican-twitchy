@@ -23,32 +23,72 @@
 
 {% block collapse_latest %}in{% endblock %}
 
+{% if article.image %}
+	{% set image = SITEURL + '/' + article.image %}
+{% elif article.og_image %}
+	{% set image = SITEURL + '/' + article.og_image %}
+{% else %}
+	{% set image = SITEURL + '/' + THUMBNAIL_DIR + '/category/' + article.category.slug + '_thumbnail_wide.jpg' %}
+{% endif %}
+
 {% block content %}
 <section id="content">
-    <article>
+    <article itemscope itemtype="http://schema.org/Article">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-md-11">
+                <header class="page-header">
+					<div class="media">
+						  <div class="media-left">
+						    <a itemprop="url" href="{{ SITEURL }}/{{ article.url }}">
+						      <img class="media-object" src="{{image}}" alt="{{ article.title|striptags }}">
+						    </a>
+						  </div>
+						  <div class="media-body">
+			                    <h1 class="media-heading">
+			                        <a itemprop="url" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+			                            <span itemprop="name">{{ article.title }}</span>
+			                        </a>
+			                    </h1>
+							    <div class="publish-info-block">
+						            <span class="published">
+						                <i class="fa fa-calendar padding-small"></i><time itemprop="dateCreated" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
+						            </span>
+						            <span class="category">
+						                <i class="fa fa-folder-open padding-small"></i><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+						            </span>
+						            {% if article.tags %}
+						            <span class="tags">
+						                <i class="fa fa-tags padding-small"></i>
+						            {% for tag in article.tags %}
+						                <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %} / {% endif %}
+						            {% endfor %}
+						            </span>
+						            {% endif %}
+							    </div>
+						  </div>
+					</div>            
+                </header>
+            	{#
                 <header class="page-header">
                     <h1>
-                        <a href="{{ SITEURL }}/{{ article.url }}"
-                           rel="bookmark"
-                           title="Permalink to {{ article.title|striptags }}">
-                            {{ article.title }}
+                        <a itemprop="url" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+                            <span itemprop="name">{{ article.title }}</span>
                         </a>
                         <small>
                         {% include "include/article_info.html" %}
                         </small>
                     </h1>
                 </header>
+                #}
             </div>
         </div>
         <div class="row">
             <div class="col-lg-9">
-                <div class="entry-content">
+                <div class="entry-content" itemprop="text">
                     {{ article.content }}
                 </div>
                 <footer class="text-right">
-                    <p>- {{article.author}}</p>
+                    <p>{{article.author}}</p>
                 </footer>
                 {% include 'include/comments.html' %}
             </div>

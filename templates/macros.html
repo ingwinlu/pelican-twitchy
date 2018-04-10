@@ -1,0 +1,197 @@
+{% set ICONS =  { 'github.com': 'fa-github-alt'
+                , SITEURL: 'fa-bullhorn'
+                , 'type_of_search=mlists': 'fa-envelope-o'
+                , 'gmane.org': 'fa-envelope-o'
+                , 'bitbucket.org': 'fa-bitbucket'
+                , 'youtube.com': 'fa-play'
+                , 'bugs.launchpad.net': 'fa-bug'
+                , 'trac.wordpress.org': 'fa-bug'
+                , 'sourceforge.net/apps/trac': 'fa-bug'
+                , 'bugs.debian.org': 'fa-bug'
+                , 'bugs.kde.org': 'fa-bug'
+                , 'mantis': 'fa-bug'
+                , 'ticket=on': 'fa-bug'
+                , 'ohloh.net': 'fa-bar-chart-o'
+                , 'stackoverflow.com': 'fa-stack-overflow'
+                , 'stackexchange.com': 'fa-stack-exchange'
+                }
+%}
+{% set LABELS = { 'fa-github-alt': 'Git repository'
+                , 'fa-bullhorn': 'Announcement on this blog'
+                , 'fa-envelope-o': 'Mailing-list participation'
+                , 'fa-bitbucket': 'Mercurial repository'
+                , 'fa-play': 'Play video'
+                , 'fa-bug': 'Reported bugs'
+                , 'fa-bar-chart-o': 'Contribution statistics'
+                }
+%}
+
+{% macro nav_small_li(href, title, content) -%}
+    <li>
+        <a href="{{href|striptags|trim}}" title="{{title|striptags|trim}}" class="collapsed">
+            {{content}}
+        </a>
+    </li>
+{%- endmacro %}
+
+{% macro nav_small_li_collapsable(href, title, content) -%}
+    <li>
+        <a href="{{href|striptags|trim}}" title="{{title|striptags|trim}}" class="collapsed">
+            {{content}}
+        </a>
+    </li>
+{%- endmacro %}
+
+{% macro get_icon_attributes(name) -%}
+    {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
+    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] -%}
+        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' -%}
+    {%- else -%}
+        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' -%}
+    {%- endif -%}
+    {%- if name|lower == 'email' -%}
+        {%- set iconattributes = 'fa fa-envelope-square fa-lg' -%}
+    {%- endif -%}
+    {{iconattributes}}
+{%- endmacro %}
+
+{% macro render_tag(tag) -%}
+  <a href="{{ SITEURL }}/{{ tag.url }}" data-toggle="tooltip"
+      class="label label-default"
+      title="{{ tag.articles }} article{{ 's' if tag.articles > 1 else '' }} with this tag">{{ tag.name }}</a>
+{%- endmacro %}
+
+{% macro render_link_icon(link, label, favicon=True) -%}
+  {% set icon = [] %}
+  {% set favicon = False if favicon == False else True %}
+  {% set protocol = link.split(':', 1)[0] %}
+  {% if protocol == 'mailto' %}
+    {% if icon.append('envelope') %}{% endif %}
+  {% elif protocol.startswith('http') %}
+    {% set domain = link.split('%s://' % protocol, 1)[1].split('/', 1)[0] %}
+    {% set SITE_ICONS = {
+          'apple': ['apple.com']
+        , 'github': ['github.com']
+        , 'twitter': ['twitter.com']
+        , 'youtube': ['youtube.com']
+        , 'dropbox': ['dropbox.com']
+        , 'facebook-square': ['facebook.com']
+        , 'file-text': ['docs.google.com']
+        , 'bitbucket': ['bitbucket.org', 'bitbucket.com']
+        , 'linkedin-square': ['linkedin.com']
+        , 'stack-overflow': ['stackoverflow.com']
+        , 'stack-exchange': ['stackexchange.com']
+        }
+    %}
+    {% for (site_icon, site_domains) in SITE_ICONS.items() %}
+      {% for site_domain in site_domains %}
+        {% if domain.startswith(site_domain) %}
+          {% if icon.append(site_icon) %}{% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+  <a href="{{ link }}">
+    {% if icon %}
+      <i class="fa {{ 'fa-%s' % icon[0] }}"></i>
+    {% elif domain and favicon %}
+      <img src="https://icons.better-idea.org/icon?url={{ domain }}&size=16" width="16" height="16" class="icon" alt="{{ domain }} icon"/>
+    {% else %}
+      <i class="fa fa-external-link"></i>
+    {% endif %}
+    {{ label }}
+  </a>
+{%- endmacro %}
+
+{% macro render_project(user, project) %}
+
+{% set labels = [
+	("Stars", project.stargazers_count),
+	("Watchs", project.watchers_count),
+	("Forks", project.forks),
+] %}
+
+<div class="col-sm-8 col-md-3">
+	<div class="thumbnail project">
+		<div class="caption">
+			<h4>{{ project.name }}
+				{% if project.homepage %}
+					<a target="_blank" href="{{ project.homepage }}"><i class="fa fa-home"></i></a>
+				{% endif %}
+				<a target="_blank" href="{{ project.github_url }}"><i class="fa fa-github-alt"></i></a>
+			</h4>
+			<p>
+				{% for label in labels %}
+				<span class="btn btn-primary btn-xs">
+					{{label.0}} <span class="badge">{{label.1}}</span>
+				</span>
+				{% endfor %}
+			</p>
+	
+			<p>
+			{% if project.description|count > 0 %}
+				{{project.description|striptags|trim|default('Pas de description...')}}
+			{% else %}
+				Pas de description...
+			{% endif %}
+			</p>
+			{#
+			<p><small>Updated : {{project.updated_at}}</small></p>
+			#}
+			
+		</div>
+	</div>
+</div>
+{% endmacro %}
+
+{% macro render_project_extend(user, project, features) %}
+
+{% set labels = [
+	("Stars", project.stargazers_count),
+	("Watchs", project.watchers_count),
+	("Forks", project.forks),
+] %}
+
+{% set homepage = features.homepage or project.homepage %}
+{% set github_url = features.github_url or project.github_url %}
+
+<div class="col-sm-8 col-md-3">
+	<div class="thumbnail project">
+		<div class="caption">
+			<h4>{{ features.name }}
+				{% if homepage %}
+					{% if homepage.startswith("http") %}
+						<a target="_blank" href="{{ homepage }}"><i class="{{features.icon|default('fa fa-home')}}"></i></a>
+					{% else %}
+						<a href="{{SITEURL}}/{{ homepage }}"><i class="fa fa-home"></i></a>
+					{% endif %}
+				{% endif %}
+				
+				{% if github_url %}
+					<a target="_blank" href="{{ github_url }}"><i class="fa fa-github-alt"></i></a>
+				{% endif %}
+			</h4>
+			
+			<p>
+				{% for label in labels %}
+				<span class="btn btn-primary btn-xs">
+					{{label.0}} <span class="badge">{{label.1}}</span>
+				</span>
+				{% endfor %}
+			</p>
+	
+			<p>{{features.description}}</p>
+			
+			<p>
+			{% for tool in features.tools %}
+				<span class="label label-default">{{tool}}</span>
+			{% endfor %}
+			</p>
+			{#
+			<p><small>Updated : {{project.updated_at}}</small></p>
+			#}
+			
+		</div>
+	</div>
+</div>
+{% endmacro %}

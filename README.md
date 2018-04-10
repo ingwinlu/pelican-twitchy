@@ -2,6 +2,8 @@
 
 pelican-twitchy is a bootstrap3 based pelican theme, with a static navbar on the left which is toggable to provide more space for content. Parts of it has been taken from the great [pelican-bootstrap3](https://github.com/DandyDev/pelican-bootstrap3) by [DandyDev](http://dandydev.net/), so credit where credit is due to all contributors of pelican-bootstrap3!
 
+## Theme Settings
+
 ## Key Features
 
 *    a sweet landing page
@@ -9,14 +11,17 @@ pelican-twitchy is a bootstrap3 based pelican theme, with a static navbar on the
 *    powered by bootstrap
 *    bootswatch theme support
 *    fontawesome!
-*    pygments theme support
+*    highlight.js support
 *    `TYPOGRIFY` support
 *    DISQUS support
 *    Google Analytics support
 *    CC License Footer (https://github.com/hlapp/cc-tools)
 *    Support ToC plugins
-
-## Theme Settings
+*    AddThis profile
+*    Twitter Card
+*    Metas Schema.org
+*    Tipue Search plugin
+*    Tag cloud plugin
 
 ### general
 Setting name (followed by default value, if exists) | Description
@@ -31,7 +36,10 @@ Setting name (followed by default value, if exists) | Description
 Setting name (followed by default value, if exists) | Description
 --------------------------------------------------- | -----------
 `BOOTSTRAP_THEME = "bootstrap"` | Which bootstrap theme should be loaded, see static/css for a list.
-`PYGMENTS_STYLE = "native"` | Which pygments theme should be loaded, see static/css for a list.
+`BOOTSTRAP_VERSION` | bootstrap version (default 3.3.7)
+`BOOTSWATCH_VERSION` | bootswatch version (default 3.3.7)
+`FONT_AWESOME_VERSION` | font-awesome version (default 4.7.0)
+`JQUERY_VERSION` | bootswatch version (default 3.1.1)
 `TYPOGRIFY = False` | If Typogrify css should be loaded
 `CUSTOM_CSS` | Can be used to provide an additional css file, e.g.: `CUSTOM_CSS = "extra/custom.css"`
 
@@ -99,6 +107,51 @@ Setting name (followed by default value, if exists) | Description
 `OPEN_GRAPH_FB_APP_ID` | Add open graph section to articles
 `OPEN_GRAPH_IMAGE` | Add image to OG section
 
+### AddThis
+Setting name (followed by default value, if exists) | Description
+--------------------------------------------------- | -----------
+`ADDTHIS_PROFILE` | Add addthis profile to all pages
+
+### Tipue Search
+Setting name (followed by default value, if exists) | Description
+--------------------------------------------------- | -----------
+`TIPUE_SEARCH` | Add [tipue_search](https://github.com/getpelican/pelican-plugins/blob/master/tipue_search) plugin
+
+### Twitter cards
+Setting name (followed by default value, if exists) | Description
+--------------------------------------------------- | -----------
+`TWITTER_CARDS` | Add Twitter Cards to all pages
+`TWITTER_USERNAME` | Twitter card profile ID
+
+### tag_cloud plugin
+Setting name (followed by default value, if exists) | Description
+--------------------------------------------------- | -----------
+`TAG_CLOUD_BADGE` | Add [tag_cloud](https://github.com/getpelican/pelican-plugins/tree/master/tag_cloud)
+`TAG_CLOUD_MAX_ITEMS` | max items setting
+`TAG_CLOUD_SORTING` | tag sorting
+`TAG_CLOUD_STEPS` | step setting
+
+### Sidebar Order
+`SIDEBAR_ORDER = ["search", "menus", "recents", "categories", "tags", "dossiers", "share", "social"]`
+
+### Icons cycle for illustrate summaries
+`ICONS = ['analytics', 'box', 'briefcase', 'browser', 'bubbles', 'diamond', 'imac', 'keyboards', 'man', 'map', 'open-box', 'package', 'settings', 'speakers', 'target', 'wine']`
+
+### Menus extended
+`
+MENUITEMS_EXTEND = [
+    {
+        "title": "Projects",
+        "link": "projects.html",
+        "icon": 'fa fa-github-alt' 
+    },
+    {
+        "title": "Categories",
+        "link": "profile.html",
+        "icon": 'glyphicon glyphicon-user' 
+    },
+]
+`
 
 ## TODO
 *    better social sharing support, maybe with lazy loaded widgets instead of simple sharer links?
