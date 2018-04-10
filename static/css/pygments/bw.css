@@ -3,7 +3,9 @@
 .highlight pre .c { font-style: italic } /* Comment */
 .highlight pre .err { border: 1px solid #FF0000 } /* Error */
 .highlight pre .k { font-weight: bold } /* Keyword */
+.highlight pre .ch { font-style: italic } /* Comment.Hashbang */
 .highlight pre .cm { font-style: italic } /* Comment.Multiline */
+.highlight pre .cpf { font-style: italic } /* Comment.PreprocFile */
 .highlight pre .c1 { font-style: italic } /* Comment.Single */
 .highlight pre .cs { font-style: italic } /* Comment.Special */
 .highlight pre .ge { font-style: italic } /* Generic.Emph */
@@ -22,8 +24,10 @@
 .highlight pre .nn { font-weight: bold } /* Name.Namespace */
 .highlight pre .nt { font-weight: bold } /* Name.Tag */
 .highlight pre .ow { font-weight: bold } /* Operator.Word */
+.highlight pre .sa { font-style: italic } /* Literal.String.Affix */
 .highlight pre .sb { font-style: italic } /* Literal.String.Backtick */
 .highlight pre .sc { font-style: italic } /* Literal.String.Char */
+.highlight pre .dl { font-style: italic } /* Literal.String.Delimiter */
 .highlight pre .sd { font-style: italic } /* Literal.String.Doc */
 .highlight pre .s2 { font-style: italic } /* Literal.String.Double */
 .highlight pre .se { font-weight: bold; font-style: italic } /* Literal.String.Escape */

@@ -3,8 +3,10 @@
 .highlight pre .c { color: #aaaaaa; font-style: italic } /* Comment */
 .highlight pre .err { color: #FF0000; background-color: #FFAAAA } /* Error */
 .highlight pre .k { color: #0000aa } /* Keyword */
+.highlight pre .ch { color: #aaaaaa; font-style: italic } /* Comment.Hashbang */
 .highlight pre .cm { color: #aaaaaa; font-style: italic } /* Comment.Multiline */
 .highlight pre .cp { color: #4c8317 } /* Comment.Preproc */
+.highlight pre .cpf { color: #aaaaaa; font-style: italic } /* Comment.PreprocFile */
 .highlight pre .c1 { color: #aaaaaa; font-style: italic } /* Comment.Single */
 .highlight pre .cs { color: #0000aa; font-style: italic } /* Comment.Special */
 .highlight pre .gd { color: #aa0000 } /* Generic.Deleted */
@@ -42,8 +44,10 @@
 .highlight pre .mh { color: #009999 } /* Literal.Number.Hex */
 .highlight pre .mi { color: #009999 } /* Literal.Number.Integer */
 .highlight pre .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight pre .sa { color: #aa5500 } /* Literal.String.Affix */
 .highlight pre .sb { color: #aa5500 } /* Literal.String.Backtick */
 .highlight pre .sc { color: #aa5500 } /* Literal.String.Char */
+.highlight pre .dl { color: #aa5500 } /* Literal.String.Delimiter */
 .highlight pre .sd { color: #aa5500 } /* Literal.String.Doc */
 .highlight pre .s2 { color: #aa5500 } /* Literal.String.Double */
 .highlight pre .se { color: #aa5500 } /* Literal.String.Escape */
@@ -54,7 +58,9 @@
 .highlight pre .s1 { color: #aa5500 } /* Literal.String.Single */
 .highlight pre .ss { color: #0000aa } /* Literal.String.Symbol */
 .highlight pre .bp { color: #00aaaa } /* Name.Builtin.Pseudo */
+.highlight pre .fm { color: #00aa00 } /* Name.Function.Magic */
 .highlight pre .vc { color: #aa0000 } /* Name.Variable.Class */
 .highlight pre .vg { color: #aa0000 } /* Name.Variable.Global */
 .highlight pre .vi { color: #aa0000 } /* Name.Variable.Instance */
+.highlight pre .vm { color: #aa0000 } /* Name.Variable.Magic */
 .highlight pre .il { color: #009999 } /* Literal.Number.Integer.Long */

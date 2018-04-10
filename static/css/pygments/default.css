@@ -4,8 +4,10 @@
 .highlight pre .err { border: 1px solid #FF0000 } /* Error */
 .highlight pre .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight pre .o { color: #666666 } /* Operator */
+.highlight pre .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight pre .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight pre .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight pre .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight pre .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight pre .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight pre .gd { color: #A00000 } /* Generic.Deleted */
@@ -45,8 +47,10 @@
 .highlight pre .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight pre .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight pre .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight pre .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight pre .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight pre .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight pre .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight pre .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight pre .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight pre .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -57,7 +61,9 @@
 .highlight pre .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight pre .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight pre .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight pre .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight pre .vc { color: #19177C } /* Name.Variable.Class */
 .highlight pre .vg { color: #19177C } /* Name.Variable.Global */
 .highlight pre .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight pre .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight pre .il { color: #666666 } /* Literal.Number.Integer.Long */

@@ -4,8 +4,10 @@
 .highlight pre .err { border: 1px solid #FF0000 } /* Error */
 .highlight pre .k { color: #007020; font-weight: bold } /* Keyword */
 .highlight pre .o { color: #666666 } /* Operator */
+.highlight pre .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
 .highlight pre .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
 .highlight pre .cp { color: #007020 } /* Comment.Preproc */
+.highlight pre .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
 .highlight pre .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
 .highlight pre .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
 .highlight pre .gd { color: #A00000 } /* Generic.Deleted */
@@ -45,8 +47,10 @@
 .highlight pre .mh { color: #40a070 } /* Literal.Number.Hex */
 .highlight pre .mi { color: #40a070 } /* Literal.Number.Integer */
 .highlight pre .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight pre .sa { color: #4070a0 } /* Literal.String.Affix */
 .highlight pre .sb { color: #4070a0 } /* Literal.String.Backtick */
 .highlight pre .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight pre .dl { color: #4070a0 } /* Literal.String.Delimiter */
 .highlight pre .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
 .highlight pre .s2 { color: #4070a0 } /* Literal.String.Double */
 .highlight pre .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
@@ -57,7 +61,9 @@
 .highlight pre .s1 { color: #4070a0 } /* Literal.String.Single */
 .highlight pre .ss { color: #517918 } /* Literal.String.Symbol */
 .highlight pre .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight pre .fm { color: #06287e } /* Name.Function.Magic */
 .highlight pre .vc { color: #bb60d5 } /* Name.Variable.Class */
 .highlight pre .vg { color: #bb60d5 } /* Name.Variable.Global */
 .highlight pre .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight pre .vm { color: #bb60d5 } /* Name.Variable.Magic */
 .highlight pre .il { color: #40a070 } /* Literal.Number.Integer.Long */
