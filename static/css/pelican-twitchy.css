@@ -223,13 +223,6 @@ ul.sidebar_submenu>li>a>i.padding-small{
     display: inline;
 }
 
-span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
-    display: inline;
-}
-.collapsed span.glyphicon-chevron-down, span.glyphicon-chevron-up{
-    display: none;
-}
-
 .padding-small{
     padding: 5px;
     text-indent: 0px;

@@ -1,7 +1,10 @@
 {% if DISQUS_SITENAME %}
     {% if DISQUS_LOAD_LATER %}
     <div id="show-comments" class="span7 text-center">
-        <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" data-disqus-identifier="{{ article.date|strftime('%Y-%m-') ~ article.slug if DISQUS_ID_PREFIX_SLUG else article.slug }}" class="btn btn-default">Show Comments</a>
+        <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread"
+          data-disqus-identifier="{{ article.date|strftime('%Y-%m-') ~
+          article.slug if DISQUS_ID_PREFIX_SLUG else article.slug }}"
+        class="btn btn-primary twitchy-background">Show Comments</a>
     </div>
     {% endif %}
     <section id="comments" class="comments {% if DISQUS_LOAD_LATER %}hidden{% endif %}">

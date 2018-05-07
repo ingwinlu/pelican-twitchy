@@ -18,13 +18,13 @@
 {%- endmacro %}
 {% macro get_icon_attributes(name) -%}
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
-    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] -%}
-        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' -%}
+    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'bitbucket'] -%}
+        {%- set iconattributes = 'fab fa-' ~ name_sanitized -%}
     {%- else -%}
-        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' -%}
+        {%- set iconattributes = 'fab fa-' ~ name_sanitized ~ '-square' -%}
     {%- endif -%}
     {%- if name|lower == 'email' -%}
-        {%- set iconattributes = 'fa fa-envelope-square fa-lg' -%}
+        {%- set iconattributes = 'fas fa-envelope-square' -%}
     {%- endif -%}
     {{iconattributes}}
 {%- endmacro %}
@@ -54,9 +54,9 @@
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
     {% endif %}
 
-    <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ SITEURL }}/theme/css/fontawesome-all.min.css" rel="stylesheet" />
     <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet" />
-    
+
     {% if TYPOGRIFY %}
         <link href="{{ SITEURL }}/theme/css/typogrify.css" rel="stylesheet" />
     {% endif %}
@@ -87,31 +87,30 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
-                {{ nav_small_li(SITEURL, SITENAME, '<span class="glyphicon glyphicon-home"></span>') }}
+                {{ nav_small_li(SITEURL, SITENAME, '<span class="fas fa-home"></span>') }}
                 <li class="nav-divider"></li>
-                {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="glyphicon glyphicon-th-list"></span>') }}
-                
+                {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="fas fa-th-list"></span>') }}
                 {% if SHARE %}
                 <li class="nav-divider"></li>
                 <li id="share-small">
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
-                        <i class="fa fa-share-alt padding-small"></i>
+                        <i class="fas fa-share-alt padding-small"></i>
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" title="Share via Facebook" target="popup">
-                            <i class="fa fa-facebook-square padding-small"></i>
+                            <i class="fas fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/share?url={{share_url}}" title="Share via Google+" target="popup">
-                            <i class="fa fa-google-plus padding-small"></i>
+                            <i class="fas fa-google-plus padding-small"></i>
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
-                            <i class="fa fa-twitter-square padding-small"></i>
+                            <i class="fas fa-twitter-square padding-small"></i>
                         </a>
                     </li>
                 </ul></li>
@@ -120,7 +119,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
-                        <i class="fa fa-users padding-small"></i>
+                        <i class="fas fa-users padding-small"></i>
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
@@ -132,7 +131,7 @@
                 </ul></li>
                 {% endif %}
                 <li class="nav-divider"></li>
-                {{ nav_small_li('#', 'Back to top', '<span class="fa fa-arrow-up"></span>') }}
+                {{ nav_small_li('#', 'Back to top', '<span class="fas fa-arrow-up"></span>') }}
             </ul>
         </div>
         <div id="sidebar-wrapper" class="twitchy-background">
@@ -141,7 +140,7 @@
                     <a href="{{ SITEURL }}/">
                         {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}" alt="Sitelogo"/> {% endif %}
                         {% if not HIDE_SITENAME %}
-                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            <span class="fas fa-home padding-small"></span>
                             {{ SITENAME }}
                         {% endif %}
                     </a>
@@ -150,7 +149,7 @@
                     <li class="nav-divider"></li>
                     <li>
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
-                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            <span class="fas fa-th-list padding-small"></span>
                             Recent Articles
                         </a>
                     </li>
@@ -158,14 +157,14 @@
                     {% for a in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
                         <li class="{% if a == article %}active{% endif %}">
                             <a class="hide-overflow" href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title|striptags|trim }}">
-                                <i class="fa fa-file-text padding-small"></i>
+                                <i class="fas fa-file-alt padding-small"></i>
                                 {{ a.title | striptags | trim }}
                             </a>
                         </li>
                     {% endfor %}
                     <li>
                         <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-                            <i class="fa fa-arrow-right padding-small"></i>
+                            <i class="fas fa-arrow-right padding-small"></i>
                             More
                         </a>
                     </li>
@@ -173,7 +172,7 @@
                 {% else %}
                     <li>
                         <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            <span class="fas fa-th-list padding-small"></span>
                             Recent Articles
                         </a>
                     </li>
@@ -182,26 +181,26 @@
                 <li class="nav-divider"></li>
                 <li id="share">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
-                        <i class="fa fa-share-alt padding-small"></i>
+                        <i class="fas fa-share-alt padding-small"></i>
                         Share
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse {% block collapse_share %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup">
-                            <i class="fa fa-facebook-square padding-small"></i>
+                            <i class="fab fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/share?url={{share_url}}" target="popup">
-                            <i class="fa fa-google-plus padding-small"></i>
+                            <i class="fab fa-google-plus-square padding-small"></i>
                             Google+
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
-                            <i class="fa fa-twitter-square padding-small"></i>
+                            <i class="fab fa-twitter-square padding-small"></i>
                             Twitter
                         </a>
                     </li>
@@ -211,7 +210,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
-                        <i class="fa fa-users padding-small"></i>
+                        <i class="fas fa-users padding-small"></i>
                         Contact
                     </a>
                 </li>
@@ -241,7 +240,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
-                        <i class="fa fa-folder-open padding-small"></i>
+                        <i class="fas fa-folder-open padding-small"></i>
                         Pages
                     </a>
                 </li>
@@ -249,19 +248,18 @@
                     {% for p in pages %}
                     <li{% if p == page %} class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ p.url }}">
-                            <i class="fa fa-file-text padding-small"></i>
+                            <i class="fas fa-file-alt padding-small"></i>
                             {{ p.menulabel|default(p.title) }}
                         </a>
                     </li>
                     {% endfor %}
                 </ul></li>
                 {% endif %}
-                
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
-                        <i class="fa fa-folder-open padding-small"></i>
+                        <i class="fas fa-folder-open padding-small"></i>
                         Categories
                     </a>
                 </li>
@@ -269,15 +267,14 @@
                     {% for cat, articles in categories %}
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
-                            <i class="fa fa-folder-open padding-small"></i>
+                            <i class="fas fa-folder-open padding-small"></i>
                             {{ cat }}
-                            <span class="badge pull-right categorybadge">{{ articles|count }}</span>
+                            <span class="badge badge-secondary float-right categorybadge">{{ articles|count }}</span>
                         </a>
                     </li>
                     {% endfor %}
                 </ul></li>
                 {% endif %}
-                
                 {% if DISPLAY_TAGS_ON_MENU %}
                     {% if DISPLAY_TAGS_INLINE %}
                         {% set tags = tag_cloud | sort(attribute='0') %}
@@ -287,7 +284,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-tags">
-                        <i class="fa fa-tags padding-small"></i>
+                        <i class="fas fa-tags padding-small"></i>
                         Tags
                     </a>
                 </li>
@@ -305,9 +302,9 @@
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- open/close sidebar -->
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
-            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">
+            <span id="right-arrow" class="fas fa-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="fas fa-chevron-left" title="minimize sidebar"></span>
         </a>
        <!-- /open/close sidebar -->
 
