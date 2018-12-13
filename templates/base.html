@@ -18,7 +18,7 @@
 {%- endmacro %}
 {% macro get_icon_attributes(name) -%}
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
-    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'bitbucket'] -%}
+    {%- if name_sanitized in ['flickr', 'linkedin', 'spotify', 'stack-overflow', 'bitbucket'] -%}
         {%- set iconattributes = 'fab fa-' ~ name_sanitized -%}
     {%- else -%}
         {%- set iconattributes = 'fab fa-' ~ name_sanitized ~ '-square' -%}
