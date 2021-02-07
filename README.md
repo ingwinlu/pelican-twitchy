@@ -1,5 +1,9 @@
 # pelican-twitchy
 
+**THIS IS CURRENTLY NOT ACTIVELY MAINTAINED**.
+This should be fine for most usecases but the bootstrap version is outdated and some minor settings (mostly where interaction with other sites is required) do not always play nice.
+Please contribute if you can as I am not actively using it anymore.
+
 pelican-twitchy is a bootstrap4 based pelican theme, with a static navbar on the left which is toggable to provide more space for content. Parts of it has been taken from the great [pelican-bootstrap3](https://github.com/DandyDev/pelican-bootstrap3) by [DandyDev](http://dandydev.net/), so credit where credit is due to all contributors of pelican-bootstrap3!
 
 ## Key Features
