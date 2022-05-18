@@ -18,7 +18,7 @@
 {%- endmacro %}
 {% macro get_icon_attributes(name) -%}
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
-    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'bitbucket'] -%}
+    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'bitbucket', 'linkedin'] -%}
         {%- set iconattributes = 'fab fa-' ~ name_sanitized -%}
     {%- else -%}
         {%- set iconattributes = 'fab fa-' ~ name_sanitized ~ '-square' -%}
@@ -277,9 +277,9 @@
                 {% endif %}
                 {% if DISPLAY_TAGS_ON_MENU %}
                     {% if DISPLAY_TAGS_INLINE %}
-                        {% set tags = tag_cloud | sort(attribute='0') %}
+                        {% set tags_list = tag_cloud | sort(attribute='0') %}
                     {% else %}
-                        {% set tags = tag_cloud | sort(attribute='1') %}
+                        {% set tags_list = tag_cloud | sort(attribute='1') %}
                     {% endif %}
                 <li class="nav-divider"></li>
                 <li>
@@ -289,7 +289,7 @@
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-tags" class="sidebar_submenu collapse {% block collapse_tags %}{% endblock %}">
-                    {% for tag in tags %}
+                    {% for tag in tags_list %}
                     <li class="tag-{{ tag.1 }}">
                         <a href="{{ SITEURL }}/{{ tag.0.url }}">
                             {{ tag.0 }}
